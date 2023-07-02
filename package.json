@@ -38,6 +38,7 @@
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-aria": "^3.26.0",
+    "react-aria-components": "^1.0.0-alpha.5",
     "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
     "react-google-recaptcha": "^3.1.0",
@@ -49,5 +50,8 @@
     "socket.io": "^4.7.1",
     "socket.io-client": "^4.7.1",
     "typescript": "5.1.6"
+  },
+  "overrides": {
+    "semver": "~7.5.2"
   }
 }
