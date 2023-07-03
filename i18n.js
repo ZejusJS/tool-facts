@@ -1,8 +1,8 @@
 module.exports = {
-    locales: ['en', 'cs'], // Array with the languages that you want to use
-    defaultLocale: 'en', // Default language of your website
+    locales: ['en', 'cs'], 
+    defaultLocale: 'en', 
     pages: {
-        '*': ['common', 'nav'],
+        '*': ['common', 'nav', 'form'],
     },
     loadLocaleFrom: (lang, ns) =>
         // You can use a dynamic import, fetch, whatever. You should

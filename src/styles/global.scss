@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #808080 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 10px;
+    border: 2px solid #ffffff00;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(15, 15, 15);
+    color: white;
+}
+
+button {
+    font-size: clamp(13px, 1rem, 25px);
+    border: 0;
+    user-select: none;
+    background-color: #960a0d;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #a50c0e;
+
+        &:active {
+            background-color: #860f11;
+        }
+    }
+}
+
+a {
+    color: purple;
+}
+
+main {
+    padding-top: 60px;
+}

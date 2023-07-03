@@ -4,8 +4,8 @@ import dbConnect from '../../../utils/connectMongo';
 import Fact from '../../../utils/models/fact';
 
 type Data = {
-  success: boolean,
-  data: object
+  success?: boolean,
+  facts: object
 }
 
 export default async function handler(
@@ -13,12 +13,14 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { query: { lng } } = req
+  let lang = String(lng)
 
   try {
     await dbConnect()
 
-    const pets = await Fact.find({}) /* find all the data in our database */
-    res.status(200).json({ success: true, data: pets })
+    console.log('sds')
+    const facts = await Fact.find({ [lang]: { $exists: true } }).select([`${lang}`, '-_id'])
+    res.status(200).json({ facts })
   } catch (e) {
     console.error(e);
   }

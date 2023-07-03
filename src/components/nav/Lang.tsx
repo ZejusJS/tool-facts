@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import i18nConfig from '../../../i18n'
-import { NextRouter } from 'next/router'
 import { SiteState } from '@/context'
-import {Button, Item, Label, ListBox, Popover, Select, SelectValue} from 'react-aria-components';
+import EnFlag from '../../svg/En'
+import CsFlag from '../../svg/Cs'
 
 const { locales } = i18nConfig
 
@@ -25,7 +25,7 @@ const lang = () => {
     }
 
     return (
-        <div>
+        <div className='lang-con'>
             {
                 locales.map((lng) => {
                     if (lng === lang) return null
@@ -36,8 +36,12 @@ const lang = () => {
                             locale={lng} key={lng}
                             onClick={() => setCookie(lng)}
                             scroll={false}
+                            title={tNav(`language-name-${lng}`)}
                         >
-                            {tNav(`language-name-${lng}`)}
+                            {
+                                lng === 'en' ?
+                                    <EnFlag /> : <CsFlag />
+                            }
                         </Link>
                     )
                 })
