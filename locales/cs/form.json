@@ -1,5 +1,8 @@
 {
     "cs-label": "Český překlad faktu",
     "en-label": "Anglický překlad faktu",
-    "username": "Uživatelské jméno"
+    "placeholder": "(Jen jeden z překladů je požadován)",
+    "title": "Přidat nový fakt",
+    "username": "Uživatelské jméno",
+    "submit": "Odeslat"
 }

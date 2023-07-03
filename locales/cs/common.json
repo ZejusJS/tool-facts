@@ -1,4 +1,8 @@
 {
     "next-fact": "NAČÍST DALŠÍ FAKT",
-    "did-you-know": "A VĚDĚLI JSTE, ŽE..."
+    "did-you-know": "A VĚDĚLI JSTE, ŽE...",
+    "new-facts": {
+        "q": "Máš nějaká nová fakta?",
+        "a": "Poděl se s nimi"
+    }
 }

@@ -1,0 +1,30 @@
+footer {
+    background-color: var(--accent4);
+    width: 100%;
+    padding: 15px 5px;
+
+    h4 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: clamp(25px, 1.5rem, 40px);
+        margin: 0;
+        text-align: center;
+
+        span {
+            font-weight: 400;
+            font-size: clamp(15px, 1.2rem, 25px);
+        }
+    }
+
+    .lang-con {
+        margin-top: 15px;
+        color: rgb(243, 243, 243);
+
+        a {
+            color: unset;
+
+            &:hover {
+                color: rgb(214, 214, 214);
+            }
+        }
+    }
+}

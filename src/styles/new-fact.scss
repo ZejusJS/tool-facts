@@ -1,0 +1,59 @@
+.fact-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+        text-align: center;
+        margin: 0 0 10px 0;
+        font-size: clamp(20px, 2.2rem, 50px);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .form-block {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            width: 100%;
+            max-width: 800px;
+
+            label {
+                font-size: clamp(15px, 1.1rem, 25px);
+            }
+
+            input, textarea {
+                width: 100%;
+                font-size: clamp(14px, 1rem, 27px);
+                border-radius: 8px;
+                padding: 5px;
+            }
+
+            textarea {
+                resize: none;
+                min-height: 150px;
+                transition: min-height 200ms;
+
+                &.expanded {
+                    min-height: 400px;
+                }
+            }
+        }
+
+        .fact-submit {
+            border-radius: 8px;
+            padding: 8px 30px;
+            margin: 0 auto;
+        }
+    }
+}

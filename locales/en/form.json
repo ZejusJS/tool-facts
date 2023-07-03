@@ -1,5 +1,8 @@
 {
     "cs-label": "Czech translation of the fact",
     "en-label": "English translation of the fact",
-    "username": "Username"
+    "placeholder": "(Only one of the translations is required)",
+    "title": "Add a new fact",
+    "username": "Username",
+    "submit": "Submit"
 }

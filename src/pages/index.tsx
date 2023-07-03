@@ -1,10 +1,8 @@
 import useTranslation from 'next-translate/useTranslation'
 
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
-import FactForm from '@/components/FactForm'
-
-
+import Link from 'next/link'
 
 export default function Home() {
   const { t, lang } = useTranslation('common')
@@ -64,7 +62,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <div className='fact-con'>
+        <section className='fact-con'>
           <div className='fact'>
             <div className='fact-wrapper'>
               <h3 className='did-you-know'>
@@ -82,8 +80,15 @@ export default function Home() {
               {t('next-fact')}
             </button>
           </div>
-        </div>
-        {/* <FactForm /> */}
+        </section>
+        <section className='fact-submit'>
+          <h3>{t('new-facts.q')}</h3>
+          <Link
+            href={'/new-fact'}
+          >
+            {t('new-facts.a')}
+          </Link>
+        </section>
       </main>
     </>
   )

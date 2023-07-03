@@ -1,10 +1,12 @@
 import { Schema, model, models } from 'mongoose';
 const maxFactLength = process.env.MAX_FACT_LENGTH
+const maxUsernameLength = process.env.MAX_USERNAME_LENGTH
 
 const factSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        maxlength: maxUsernameLength
     },
     cs: {
         type: String,

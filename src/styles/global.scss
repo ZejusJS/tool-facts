@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+    --accent1: #960a0d;
+    --accent2: #a50c0e;
+    --accent3: #860f11;
+    --accent4: #a80016;
+}
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
@@ -28,21 +36,30 @@ body {
     margin: 0;
     background-color: rgb(15, 15, 15);
     color: white;
+    min-height: 100svh;
+}
+
+input, textarea {
+    background-color: rgb(37, 37, 37);
+    color: white;
+    border: 0;
+    border: 3px solid rgb(65, 65, 65);
 }
 
 button {
     font-size: clamp(13px, 1rem, 25px);
     border: 0;
+    border-radius: 8px;
     user-select: none;
-    background-color: #960a0d;
+    background-color: var(--accent1);
     color: white;
 
     &:hover {
         cursor: pointer;
-        background-color: #a50c0e;
+        background-color: var(--accent2);
 
         &:active {
-            background-color: #860f11;
+            background-color: var(--accent3);
         }
     }
 }
@@ -53,4 +70,5 @@ a {
 
 main {
     padding-top: 60px;
+    min-height: 100dvh;
 }

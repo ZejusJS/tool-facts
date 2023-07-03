@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import Lang from "./Lang"
 import { SiteState } from '@/context'
+import Link from "next/link";
 
 const index = () => {
     const { tNav: t, lang, router }: typeof SiteState.arguments = SiteState()
@@ -47,10 +48,11 @@ const index = () => {
             ref={navRef}
         >
             <div className="nav-con">
-                <h1>
-                    {t('title')}
-                    <span>{t('short-title')}</span>
-                </h1>
+                <Link href={'/'}>
+                    <h1>
+                        {t('title')}
+                    </h1>
+                </Link>
                 <Lang />
             </div>
         </nav>
