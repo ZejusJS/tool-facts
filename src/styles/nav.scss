@@ -6,6 +6,7 @@ nav {
     background-color: var(--accent4);
     box-shadow: 0 0 12px -5px black;
     overflow: hidden;
+    z-index: 1000;
 
     .nav-con {
         display: flex;
@@ -43,6 +44,10 @@ nav {
                 height: auto;
                 width: 100%;
                 box-shadow: 0 0 13px -4px rgba(0, 0, 0, 0.753);
+            }
+
+            @media (max-width: 300px) {
+                display: none;
             }
         }
     }

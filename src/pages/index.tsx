@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation'
 
 import { RefObject, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
-import Link from 'next/link'
+import FactsCount from '@/components/FactsCount'
 
 export default function Home() {
   const { t, lang } = useTranslation('common')
@@ -14,7 +14,6 @@ export default function Home() {
   const eyeRef: RefObject<HTMLImageElement> = useRef(null)
 
   useEffect(() => {
-    console.log(lang)
 
     setLoadingFact(true)
 
@@ -84,12 +83,10 @@ export default function Home() {
               <img
                 ref={eyeRef}
                 className={loadingFact ? '' : 'hidden'}
-                loading='lazy'
                 width={1500}
                 height={1500}
-                src="https://media0.giphy.com/media/TW4tMy1n3xsI5PD0H5/giphy.gif?cid=6c09b9522kbb33b8nfq4sgzl0hfaes98sho94ijofqxf1k2b&ep=v1_stickers_related&rid=giphy.gif&ct=s" alt=""
+                src="https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif" alt=""
               />
-
             </div>
             <button
               type='button'
@@ -99,6 +96,7 @@ export default function Home() {
               {t('next-fact')}
             </button>
           </div>
+          <FactsCount t={t} />
         </section>
         {/* <section className='fact-submit'>
           <div className='new-fact-con'>

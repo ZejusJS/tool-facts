@@ -4,8 +4,10 @@ import dbConnect from '../../../utils/connectMongo';
 import Fact from '../../../utils/models/fact';
 
 type Data = {
-  success?: boolean,
-  facts: object
+  success?: boolean
+  facts?: object
+  factsEN?: number
+  factsCS?: number
 }
 
 export default async function handler(
@@ -15,12 +17,22 @@ export default async function handler(
   const { query: { lng } } = req
   let lang = String(lng)
 
-  try {
-    await dbConnect()
+  switch (req.method) {
+    case 'GET':
+      try {
+        await dbConnect()
 
-    const facts = await Fact.find({ [lang]: { $exists: true }, show: true }).select([`${lang}`, '-_id'])
-    res.status(200).json({ facts })
-  } catch (e) {
-    console.error(e);
+        const facts = await Fact.find({ [lang]: { $exists: true }, show: true }).select([`${lang}`, '-_id'])
+
+        res.setHeader('Cache-Control', "max-age=1000, stale-while-revalidate")
+        res.status(200).json({ facts })
+
+      } catch (e) {
+        console.error(e);
+        res.status(500).json({ success: false })
+      }
+      break
+    default:
+      res.status(404).json({ success: false })
   }
 }

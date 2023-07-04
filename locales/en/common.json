@@ -4,5 +4,6 @@
     "new-facts": {
         "q": "Do you have any new facts?",
         "a": "Share it with us!"
-    }
+    },
+    "total": "This site lists <2>{{cs}}</2> amazing facts in <0>czech</0> and <2>{{en}}</2> in <1>english</1>!"
 }

@@ -4,5 +4,6 @@
     "new-facts": {
         "q": "Máš nějaká nová fakta?",
         "a": "Poděl se s námi!"
-    }
+    },
+    "total": "Tato stránka sčítá úžasných <2>{{cs}}</2> faktů v <0>češtině</0> a <2>{{en}}</2> v <1>angličtině</1>!"
 }
