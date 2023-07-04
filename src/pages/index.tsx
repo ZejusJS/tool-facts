@@ -21,11 +21,15 @@ export default function Home() {
       method: 'get',
       url: `/api/all-facts/${lang}`,
       onDownloadProgress(progressEvent) {
-        setLoadingFact(false)
+        setTimeout(() => {
+          setLoadingFact(false)
+        }, 300);
       },
     })
       .then(data => {
-        setFacts(data.data.facts)
+        setTimeout(() => {
+          setFacts(data.data.facts)
+        }, 200);
         shuffleFacts()
       })
       .catch(e => console.error(e))

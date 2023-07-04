@@ -60,7 +60,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
                 opacity: 1;
-                transition: opacity 300ms;
+                transition: opacity 250ms;
 
                 &.hidden {
                     opacity: 0;
@@ -100,7 +100,7 @@
             overflow: auto;
 
             opacity: 1;
-            transition: opacity 250ms;
+            transition: opacity 200ms;
 
             &.hidden {
                 opacity: 0;
