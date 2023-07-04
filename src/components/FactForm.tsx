@@ -40,7 +40,7 @@ const factForm = () => {
                 console.log(data)
                 setCaptcha('')
                 reCaptchaRef?.current?.reset()
-                setFact(defaultFact)
+                setFact({ ...defaultFact, username: fact.username })
             })
             .catch(e => console.error(e))
     }

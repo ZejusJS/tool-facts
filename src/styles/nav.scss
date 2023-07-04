@@ -16,6 +16,8 @@ nav {
 
         a {
             text-decoration: none;
+            word-break: keep-all;
+            white-space: nowrap;
         }
 
         h1 {
