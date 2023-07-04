@@ -36,7 +36,7 @@
         background-color: rgb(34, 34, 34);
         border-radius: 12px;
         overflow: hidden;
-        height: clamp(320px, 100vh, 600px);
+        height: clamp(420px, 90vh, 600px);
         word-wrap: break-word;
         flex-wrap: nowrap;
         box-shadow: 0 0 30px -8px rgba(80, 80, 80, 0.801);
@@ -54,8 +54,9 @@
                 // height: 100%;
                 object-fit: contain;
                 position: absolute;
-                width: 120%;
+                width: 125%;
                 max-width: 500px;
+                height: 100%;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);

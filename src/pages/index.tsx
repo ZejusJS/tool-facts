@@ -28,9 +28,8 @@ export default function Home() {
     })
       .then(data => {
         setTimeout(() => {
-          setFacts(data.data.facts)
+          shuffleFacts(data.data.facts)
         }, 200);
-        shuffleFacts()
       })
       .catch(e => console.error(e))
   }, [lang])
@@ -55,19 +54,20 @@ export default function Home() {
     }
   }
 
-  function shuffleFacts() {
+  function shuffleFacts(data?: any) {
     setFacts(prev => {
-      let i = prev.length
+      let array = data ? data : prev
+      let i = array.length
       let j, temp
 
       while (--i > 0) {
         j = Math.floor(Math.random() * (i + 1))
-        temp = prev[j]
-        prev[j] = prev[i]
-        prev[i] = temp
+        temp = array[j]
+        array[j] = array[i]
+        array[i] = temp
       }
 
-      return prev
+      return array
     })
   }
 
@@ -87,8 +87,6 @@ export default function Home() {
               <img
                 ref={eyeRef}
                 className={loadingFact ? '' : 'hidden'}
-                width={1500}
-                height={1500}
                 src="https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif" alt=""
               />
             </div>
