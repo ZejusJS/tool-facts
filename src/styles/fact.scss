@@ -17,6 +17,7 @@
         height: clamp(320px, 100vh, 600px);
         word-wrap: break-word;
         flex-wrap: nowrap;
+        box-shadow: 0 0 30px -8px rgba(80, 80, 80, 0.801);
 
         .fact-wrapper {
             display: flex;
@@ -32,8 +33,12 @@
             padding: 5px;
             margin: 0;
             width: 100%;
-            font-size: clamp(24px, 1.6rem, 45px);
+            font-size: clamp(24px, 2.3rem, 45px);
             background-color: var(--accent1);
+
+            @media (max-width: 500px) {
+                font-size: clamp(24px, 1.7rem, 45px);
+            }
         }
 
         p {
@@ -55,10 +60,14 @@
         .next-fact {
             padding: 8px;
             color: white;
-            font-size: clamp(14px, 1.2rem, 26px);
+            font-size: clamp(14px, 1.8rem, 35px);
             width: 100%;
             flex-shrink: 0;
             border-radius: 0;
+
+            @media (max-width: 500px) {
+                font-size: clamp(14px, 1.5rem, 35px);
+            }
         }
     }
 

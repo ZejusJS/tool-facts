@@ -1,0 +1,31 @@
+section.fact-submit {
+    padding: 5px 5px 100px 5px;
+
+    .new-fact-con {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        background-color: rgb(37, 37, 37);
+        border: 2px solid rgb(85, 85, 85);
+        border-radius: 10px;
+        text-align: center;
+
+        h3 {
+            font-size: 25px;
+            margin: 0;
+        }
+
+        .a-con {
+            font-size: 25px;
+            color: var(--accent5);
+
+            a {
+                color: unset;
+            }
+        }
+    }
+}

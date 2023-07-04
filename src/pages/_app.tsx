@@ -17,6 +17,7 @@ import '../styles/new-fact.scss'
 import '../styles/nav.scss'
 import '../styles/footer.scss'
 import '../styles/landpage.scss'
+import '../styles/fact-approve.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

@@ -33,13 +33,15 @@ export default function Home() {
   }, [facts])
 
   function nextFact() {
-    setFact(facts[factsCount.current][lang])
+    if (facts.length) {
+      setFact(facts[factsCount.current][lang])
 
-    factsCount.current = factsCount.current + 1
+      factsCount.current = factsCount.current + 1
 
-    if (factsCount.current >= facts.length) {
-      shuffleFacts()
-      factsCount.current = 0
+      if (factsCount.current >= facts.length) {
+        shuffleFacts()
+        factsCount.current = 0
+      }
     }
   }
 
@@ -49,7 +51,7 @@ export default function Home() {
       let j, temp
 
       while (--i > 0) {
-        let j = Math.floor(Math.random() * (i + 1))
+        j = Math.floor(Math.random() * (i + 1))
         temp = prev[j]
         prev[j] = prev[i]
         prev[i] = temp
@@ -81,14 +83,18 @@ export default function Home() {
             </button>
           </div>
         </section>
-        <section className='fact-submit'>
-          <h3>{t('new-facts.q')}</h3>
-          <Link
-            href={'/new-fact'}
-          >
-            {t('new-facts.a')}
-          </Link>
-        </section>
+        {/* <section className='fact-submit'>
+          <div className='new-fact-con'>
+            <h3>{t('new-facts.q')}</h3>
+            <span className='a-con'>
+              <Link
+                href={'/new-fact'}
+              >
+                {t('new-facts.a')}
+              </Link>
+            </span>
+          </div>
+        </section> */}
       </main>
     </>
   )

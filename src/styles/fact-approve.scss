@@ -1,0 +1,57 @@
+.fact-approve {
+    .psw-con {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+        width: 100%;
+
+        form {
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+
+            label {
+                font-size: 19px;
+            }
+
+            input {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    }
+
+    .fact {
+        padding: 5px;
+
+        p {
+            margin: 0;
+        }
+
+        div {
+            margin: 12px 0;
+        }
+
+        h4 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        &:nth-child(2n) {
+            background-color: rgb(46, 46, 46);
+        }
+
+        .btn-action {
+            padding: 6px 10px;
+            margin: 0 5px;
+
+            &.btn-approve {
+                background-color: green;
+            }
+        }
+
+    }
+}

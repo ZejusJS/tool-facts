@@ -6,6 +6,7 @@
     --accent2: #a50c0e;
     --accent3: #860f11;
     --accent4: #a80016;
+    --accent5: #d80000;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -36,7 +37,7 @@ body {
     margin: 0;
     background-color: rgb(15, 15, 15);
     color: white;
-    min-height: 100svh;
+    min-height: 100vh;
 }
 
 input, textarea {
@@ -70,5 +71,5 @@ a {
 
 main {
     padding-top: 60px;
-    min-height: 100dvh;
+    min-height: 100svh;
 }

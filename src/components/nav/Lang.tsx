@@ -33,7 +33,8 @@ const lang = () => {
                     return (
                         <Link
                             href={url(lng)}
-                            locale={lng} key={lng}
+                            locale={lng} 
+                            key={lng}
                             onClick={() => setCookie(lng)}
                             scroll={false}
                             title={tNav(`language-name-${lng}`)}

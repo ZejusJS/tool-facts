@@ -31,12 +31,14 @@ const lang = () => {
                     // if (lng === lang) return null
 
                     return (
-                        <span>
+                        <span key={i}>
                             <Link
+                                className={lng === lang ? 'same' : ''}
                                 href={url(lng)}
                                 locale={lng} key={lng}
                                 onClick={() => setCookie(lng)}
                                 scroll={false}
+
                             >
                                 {tNav(`language-name-${lng}`)}
                             </Link>

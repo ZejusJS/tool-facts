@@ -18,8 +18,7 @@ export default async function handler(
   try {
     await dbConnect()
 
-    console.log('sds')
-    const facts = await Fact.find({ [lang]: { $exists: true } }).select([`${lang}`, '-_id'])
+    const facts = await Fact.find({ [lang]: { $exists: true }, show: true }).select([`${lang}`, '-_id'])
     res.status(200).json({ facts })
   } catch (e) {
     console.error(e);
