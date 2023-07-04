@@ -18,7 +18,6 @@ export default function Home() {
       url: `/api/all-facts/${lang}`
     })
       .then(data => {
-        console.log(data.data.facts)
         setFacts(data.data.facts)
         shuffleFacts()
       })
@@ -26,7 +25,7 @@ export default function Home() {
   }, [lang])
 
   useEffect(() => {
-    if (facts.length) {
+    if (facts?.length) {
       setFact(facts[0][lang])
       factsCount.current = 1
     }

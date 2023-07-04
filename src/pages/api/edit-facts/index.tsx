@@ -14,9 +14,12 @@ export default async function handler(
     switch (req.method) {
         case 'GET':
             if (req?.cookies?.fact_session === process.env.FACT_SECRET) {
+                let { show } = req.query
+                console.log(show)
+                if (String(show) !== 'true' && String(show) !== 'false') show = 'true'
                 await dbConnect()
 
-                const facts = await Fact.find({})
+                const facts = await Fact.find({ show })
                 res.status(200).json({ facts, success: true })
             } else {
                 console.log(req?.cookies)

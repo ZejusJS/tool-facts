@@ -32,7 +32,9 @@
                 font-size: clamp(15px, 1.1rem, 25px);
             }
 
-            input, textarea {
+            input,
+            textarea {
+                font-family: 'PT Mono', monospace;
                 width: 100%;
                 font-size: clamp(14px, 1rem, 27px);
                 border-radius: 8px;
@@ -61,6 +63,47 @@
             border-radius: 8px;
             padding: 8px 30px;
             margin: 0 auto;
+        }
+    }
+}
+
+
+.fact-edit {
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px 0;
+        gap: 10px;
+
+        .form-block {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 700px;
+
+            textarea,
+            input {
+                font-family: 'PT Mono', monospace;
+                padding: 5px;
+                font-size: 15px;
+            }
+
+            textarea {
+                min-height: 100px;
+                min-width: 100%;
+                max-width: 400px;
+            }
+
+            &.btns {
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+
+                .fact-submit {
+                    width: 100%;
+                }
+            }
         }
     }
 }

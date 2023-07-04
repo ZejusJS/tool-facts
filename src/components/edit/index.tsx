@@ -1,7 +1,9 @@
-import { FormEvent, useRef } from "react"
+import axios from "axios"
+import { useRouter } from "next/router"
+import { ChangeEvent, FormEvent, useRef, useState } from "react"
 
 interface props {
-    fact: {
+    factFetch: {
         _id: string,
         en: string,
         cs: string,
@@ -9,10 +11,13 @@ interface props {
     }
 }
 
-const index = ({ fact }: props) => {
+const index = ({ factFetch }: props) => {
+    const [fact, setFact] = useState(factFetch)
+    const router = useRouter()
+
     const textEN = useRef<HTMLTextAreaElement | null>(null)
     const textCS = useRef<HTMLTextAreaElement | null>(null)
-    
+
     function submitFact(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
@@ -20,27 +25,52 @@ const index = ({ fact }: props) => {
             method: 'post',
             url: `/api/edit-facts/${fact._id}`,
             data: {
-                ...fact,
-                captcha
+                ...fact
             }
         })
             .then(data => {
                 console.log(data)
-                setFact(defaultFact)
+                router.replace(router.asPath, '', { shallow: false, scroll: false })
             })
             .catch(e => console.error(e))
+    }
+
+    function deleteFact() {
+        axios({
+            method: 'post',
+            url: '/api/approve-fact',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: { approve: false, _id: fact._id },
+            withCredentials: true
+        })
+            .then(data => {
+                console.log(data)
+
+                router.replace(router.asPath, '', { shallow: false, scroll: false })
+            })
+            .catch(e => console.error(e))
+    }
+
+    function changeFact(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        const { name, value } = e.target
+
+        setFact(prev => {
+            return { ...prev, [name]: value }
+        })
     }
 
     return (
         <>
             <form onSubmit={e => submitFact(e)}>
                 <div className='form-block'>
-                    <label htmlFor="username">{t('username')}</label>
+                    <label htmlFor="username">{'Username'}</label>
                     <input
                         type="text"
                         name='username'
                         id='username'
-                        placeholder={"*" + t('username')}
+                        placeholder={'Username'}
                         value={fact.username}
                         onChange={changeFact}
                     />
@@ -71,9 +101,16 @@ const index = ({ fact }: props) => {
                         onFocus={() => textCS?.current?.classList?.add('expanded')}
                     />
                 </div>
-                <div className='form-block'>
+                <div className='form-block btns'>
                     <button className='fact-submit' type="submit">
-                        {t('submit')}
+                        {'Submit'}
+                    </button>
+                    <button
+                        type="button"
+                        className='fact-delete'
+                        onClick={deleteFact}
+                    >
+                        Delete
                     </button>
                 </div>
             </form>
