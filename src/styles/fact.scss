@@ -24,7 +24,28 @@
             flex-direction: column;
             min-height: 0;
             height: 100%;
+            position: relative;
+            overflow: hidden;
             // height: 500px;
+
+            img {
+                // height: 100%;
+                object-fit: contain;
+                position: absolute;
+                width: 120%;
+                max-width: 500px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                transition: opacity 300ms;
+
+                &.hidden {
+                    opacity: 0;
+                    user-select: none;
+                    pointer-events: none;
+                }
+            }
         }
 
         .did-you-know {
@@ -55,6 +76,13 @@
             padding: 5px;
             height: 100%;
             overflow: auto;
+
+            opacity: 1;
+            transition: opacity 250ms;
+
+            &.hidden {
+                opacity: 0;
+            }
         }
 
         .next-fact {

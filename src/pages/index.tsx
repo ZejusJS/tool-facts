@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation'
 
-import { useEffect, useRef, useState } from 'react'
+import { RefObject, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 
@@ -8,14 +8,22 @@ export default function Home() {
   const { t, lang } = useTranslation('common')
   const [fact, setFact] = useState('')
   const [facts, setFacts] = useState([])
+  const [loadingFact, setLoadingFact] = useState(true)
   const factsCount = useRef(1)
+
+  const eyeRef: RefObject<HTMLImageElement> = useRef(null)
 
   useEffect(() => {
     console.log(lang)
 
+    setLoadingFact(true)
+
     axios({
       method: 'get',
-      url: `/api/all-facts/${lang}`
+      url: `/api/all-facts/${lang}`,
+      onDownloadProgress(progressEvent) {
+        setLoadingFact(false)
+      },
     })
       .then(data => {
         setFacts(data.data.facts)
@@ -69,9 +77,19 @@ export default function Home() {
               <h3 className='did-you-know'>
                 {t('did-you-know')}
               </h3>
-              <p>
+
+              <p className={loadingFact ? 'hidden' : ''}>
                 {fact}
               </p>
+              <img
+                ref={eyeRef}
+                className={loadingFact ? '' : 'hidden'}
+                loading='lazy'
+                width={1500}
+                height={1500}
+                src="https://media0.giphy.com/media/TW4tMy1n3xsI5PD0H5/giphy.gif?cid=6c09b9522kbb33b8nfq4sgzl0hfaes98sho94ijofqxf1k2b&ep=v1_stickers_related&rid=giphy.gif&ct=s" alt=""
+              />
+
             </div>
             <button
               type='button'
