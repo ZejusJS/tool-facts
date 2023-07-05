@@ -19,7 +19,7 @@ export default async function handler(
         try {
             await dbConnect()
 
-            const fact = await Fact.findByIdAndUpdate(_id, { ...req.body })
+            await Fact.findByIdAndUpdate(_id, { ...req.body })
             res.status(200).json({ success: true })
         } catch (e) {
             console.error(e);

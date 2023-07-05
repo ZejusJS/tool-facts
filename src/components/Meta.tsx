@@ -9,13 +9,13 @@ const q = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.svg" />
 
-            <meta property="og:image" content="https://tool-facts.vercel.app/Tool-Logo-2006.png" />
+            <meta property="og:image" content="https://tool-facts.vercel.app/imgs/Tool-Logo-2006.png" />
             <meta property="og:description" content={`Facts about award-winning band Tool`} />
             <meta property="og:title" content={`TOOL Facts`} />
 
             <meta name="twitter:card" content="summary" />
             <meta property="twitter:domain" content="toolfacts.vercel.app" />
-            <meta property="twitter:image" content="https://tool-facts.vercel.app/Tool-Logo-2006.png" />
+            <meta property="twitter:image" content="https://tool-facts.vercel.app/imgs/Tool-Logo-2006.png" />
             <meta property='twitter:title' content={`TOOL Facts`} />
             <meta property='twitter:description' content={`Facts about award-winning band Tool`} />
         </Head>

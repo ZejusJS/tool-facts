@@ -22,7 +22,7 @@ export default async function handler(
             try {
                 await dbConnect()
 
-                // res.setHeader('Cache-Control', "max-age=120000, stale-while-revalidate")
+                res.setHeader('Cache-Control', "max-age=10000, stale-while-revalidate=100000")
 
                 const factsCS = await Fact.count({ cs: { $exists: true } })
                 const factsEN = await Fact.count({ en: { $exists: true } })

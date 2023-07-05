@@ -21,7 +21,6 @@ const FactsCount = ({ t }: props) => {
             url: `/api/facts-count`,
         })
             .then(data => {
-                console.log(data)
                 setLangs(data.data)
             })
             .catch(e => console.error(e))

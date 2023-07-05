@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../utils/connectMongo';
 import Fact from '../../../utils/models/fact';
+import cacheData from "memory-cache";
 
 type Data = {
   success?: boolean
@@ -24,7 +25,7 @@ export default async function handler(
 
         const facts = await Fact.find({ [lang]: { $exists: true }, show: true }).select([`${lang}`, '-_id'])
 
-        res.setHeader('Cache-Control', "max-age=1000, stale-while-revalidate")
+        res.setHeader('Cache-Control', "max-age=1000, stale-while-revalidate=40000")
         res.status(200).json({ facts })
 
       } catch (e) {
