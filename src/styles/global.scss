@@ -14,7 +14,7 @@
 * {
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: #808080 #ffffff;
+    scrollbar-color: #808080 #ffffff00;
 }
 
 /* Chrome, Edge, and Safari */
@@ -70,6 +70,6 @@ a {
 }
 
 main {
-    padding-top: 60px;
+    padding-top: 50px;
     min-height: 100svh;
 }

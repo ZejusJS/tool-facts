@@ -6,7 +6,7 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' https://recaptcha.net https://*.gstatic.com;
   child-src 'self';
   style-src 'self' 'unsafe-hashes' 'unsafe-inline' https://*.googleapis.com;
-  img-src 'self' blob: https://*.cloudinary.com https://*.unsplash.com https://*.tenor.com;
+  img-src 'self' blob: data: https:;
   frame-src 'self' https://*.google.com https://recaptcha.net;
 `
 

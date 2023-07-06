@@ -2,6 +2,7 @@ import useTranslation from 'next-translate/useTranslation'
 
 import FactsCount from '@/components/FactsCount'
 import Fact from '@/components/Fact'
+import About from '@/components/About'
 
 export default function Home() {
   const { t } = useTranslation('common')
@@ -10,21 +11,11 @@ export default function Home() {
     <>
       <main>
         <section className='fact-con'>
+          <h2>{t('title')}</h2>
           <Fact />
           <FactsCount t={t} />
+          <About />
         </section>
-        {/* <section className='fact-submit'>
-          <div className='new-fact-con'>
-            <h3>{t('new-facts.q')}</h3>
-            <span className='a-con'>
-              <Link
-                href={'/new-fact'}
-              >
-                {t('new-facts.a')}
-              </Link>
-            </span>
-          </div>
-        </section> */}
       </main>
     </>
   )
