@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { NextPageContext } from 'next/types'
 
@@ -16,6 +17,7 @@ let imgs = [
 ]
 
 function Error({ statusCode }: { statusCode: number }) {
+    const { t } = useTranslation('error')
 
     function Image() {
         let randomNum = Math.floor(Math.random() * (imgs.length - 1))
@@ -29,19 +31,19 @@ function Error({ statusCode }: { statusCode: number }) {
             {
                 statusCode === 404 ?
                     <section className='error-page not-found'>
-                        <h3>Page was not found</h3>
+                        <h3>{t('not-found')}</h3>
                         <Image />
                         <Link className='back' href='/' shallow={false} prefetch={false}>
-                            Go to Homepage
+                            {t('home')}
                         </Link>
                     </section>
                     :
                     <section className='error-page'>
-                        <h3>Something went wrong</h3>
+                        <h3>{t('wrong')}</h3>
                         <Image />
                         <h4>Code: <span>{statusCode}</span></h4>
                         <Link className='back' href='/' shallow={false} prefetch={false}>
-                            Go to Homepage
+                            {t('home')}
                         </Link>
                     </section>
             }

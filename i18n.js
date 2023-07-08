@@ -2,7 +2,7 @@ module.exports = {
     locales: ['en', 'cs'], 
     defaultLocale: 'cs', 
     pages: {
-        '*': ['common', 'nav', 'form', 'about'],
+        '*': ['common', 'nav', 'form', 'about', 'error'],
     },
     loadLocaleFrom: (lang, ns) =>
         // You can use a dynamic import, fetch, whatever. You should
