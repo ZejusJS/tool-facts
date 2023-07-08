@@ -11,8 +11,7 @@ export function middleware(req: NextRequest) {
   let redirect = false
   let findLocale = false
   locales.map((lang) => {
-    if (req.url.includes(lang) && locale && locale !== lang) {
-      console.log('ssssssssssssssssssss')
+    if (locale && req.url.includes(lang) && locale !== lang) {
       req.nextUrl.href = req.url.replace(lang, locale)
       redirect = true
     }
@@ -20,8 +19,9 @@ export function middleware(req: NextRequest) {
       findLocale = true
     }
   })
+  
   if (redirect) return NextResponse.redirect(req.nextUrl)
-  else if (!findLocale && locale) {
+  else if (!findLocale && locale && locale !== 'cs') {
     req.nextUrl.pathname = req.nextUrl.pathname.replace(/\//, '/' + locale + '/')
     return NextResponse.redirect(req.nextUrl)
   }

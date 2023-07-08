@@ -33,7 +33,7 @@ const nextConfig = nextTranslate({
         headers: securityHeaders,
       },
     ]
-  },
+  }
 })
 
 module.exports = nextConfig

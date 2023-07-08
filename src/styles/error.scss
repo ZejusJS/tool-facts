@@ -1,0 +1,37 @@
+main.error {
+    display: flex;
+}
+
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        margin: 10px 0 0 0;
+    }
+
+    img {
+        max-width: 100%;
+        width: auto;
+        max-height: 400px;
+    }
+
+    a {
+        margin: 32px 0;
+        font-size: 1.3rem;
+        color: var(--accent5);
+
+        &:hover {
+            color: var(--accent4);
+        }
+    }
+}

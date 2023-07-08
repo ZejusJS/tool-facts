@@ -11,7 +11,7 @@ interface props {
 }
 
 const LinkText = ({ lang, children }: props) => {
-    const { router }: typeof SiteState.arguments = SiteState()
+    const { router, lang: langSel }: typeof SiteState.arguments = SiteState()
 
     function url(lng: string): string {
         let href = router.asPath
@@ -24,8 +24,14 @@ const LinkText = ({ lang, children }: props) => {
         return href
     }
 
-    function setCookie(lng: string) {
-        document.cookie = `NEXT_LOCALE=${lng};path=/`
+    function setCookieDoc(lng: string, e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault()
+        
+        if (lang !== langSel) {
+            document.cookie = `NEXT_LOCALE=${lng};path=/`
+
+            router.reload()
+        }
     }
 
     return (
@@ -33,8 +39,9 @@ const LinkText = ({ lang, children }: props) => {
             href={url(lang)}
             locale={lang}
             key={lang}
-            onClick={() => setCookie(lang)}
+            onClick={(e) => setCookieDoc(lang, e)}
             scroll={false}
+            prefetch={false}
         >
             {
                 lang === 'cs' ?

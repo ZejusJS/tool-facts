@@ -3,11 +3,13 @@ import i18nConfig from '../../../i18n'
 import { SiteState } from '@/context'
 import EnFlag from '../../svg/En'
 import CsFlag from '../../svg/Cs'
+import { useRouter } from 'next/router'
 
 const { locales } = i18nConfig
 
 const lang = () => {
-    const { tNav, lang, router }: typeof SiteState.arguments = SiteState()
+    const { tNav, lang }: typeof SiteState.arguments = SiteState()
+    const router = useRouter()
 
     function url(lng: string): string {
         let href = router.asPath
@@ -20,8 +22,14 @@ const lang = () => {
         return href
     }
 
-    function setCookie(lng: string) {
-        document.cookie = `NEXT_LOCALE=${lng};path=/`
+    function setCookieDoc(lng: string, e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault()
+        
+        if (lng !== lang) {
+            document.cookie = `NEXT_LOCALE=${lng};path=/`
+
+            router.reload()
+        }
     }
 
     return (
@@ -33,11 +41,12 @@ const lang = () => {
                     return (
                         <Link
                             href={url(lng)}
-                            locale={lng} 
+                            locale={lng}
                             key={lng}
-                            onClick={() => setCookie(lng)}
+                            onClick={(e) => setCookieDoc(lng, e)}
                             scroll={false}
                             title={tNav(`language-name-${lng}`)}
+                            prefetch={false}
                         >
                             {
                                 lng === 'en' ?

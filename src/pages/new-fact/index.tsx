@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next/types'
 const index = () => {
   return (
     <main>
-        <FactForm />
+      <FactForm />
     </main>
   )
 }
@@ -12,20 +12,20 @@ const index = () => {
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
   if (process.env.NODE_ENV !== 'development') {
     return {
-        redirect: {
-            destination: '/',
-        },
-        props: {
+      redirect: {
+        destination: '/',
+      },
+      props: {
 
-        }
+      }
     }
-}
+  }
 
-return {
+  return {
     props: {
-        
+
     }
-}
+  }
 }
 
 export default index

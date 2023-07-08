@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import i18nConfig from '../../../i18n'
 import { SiteState } from '@/context'
-import EnFlag from '../../svg/En'
-import CsFlag from '../../svg/Cs'
 
 const { locales } = i18nConfig
 
@@ -20,8 +18,14 @@ const lang = () => {
         return href
     }
 
-    function setCookie(lng: string) {
-        document.cookie = `NEXT_LOCALE=${lng};path=/`
+    function setCookieDoc(lng: string, e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault()
+        
+        if (lng !== lang) {
+            document.cookie = `NEXT_LOCALE=${lng};path=/`
+
+            router.reload()
+        }
     }
 
     return (
@@ -36,9 +40,9 @@ const lang = () => {
                                 className={lng === lang ? 'same' : ''}
                                 href={url(lng)}
                                 locale={lng} key={lng}
-                                onClick={() => setCookie(lng)}
+                                onClick={(e) => setCookieDoc(lng, e)}
                                 scroll={false}
-
+                                prefetch={false}
                             >
                                 {tNav(`language-name-${lng}`)}
                             </Link>
