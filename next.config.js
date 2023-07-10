@@ -8,6 +8,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-hashes' 'unsafe-inline' https://*.googleapis.com;
   img-src 'self' blob: data: https:;
   frame-src 'self' https://*.google.com https://recaptcha.net;
+  connect-src 'self' https://*.vercel-insights.com;
 `
 
 const securityHeaders = [
