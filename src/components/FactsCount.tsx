@@ -38,7 +38,7 @@ const FactsCount = ({ t }: props) => {
                     components={[
                         <LinkText lang='cs' key={'link1'} />,
                         <LinkText lang='en' key={'link2'} />,
-                        <span className="count"></span>
+                        <span className={"count" + ` ${langs.factsCS == 0 ? "blur" : ""}`}></span>
                     ]}
                     values={{ cs: langs.factsCS, en: langs.factsEN }}
                 />

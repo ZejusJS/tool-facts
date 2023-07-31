@@ -31,7 +31,14 @@ export default async function handler(
                     if (!keyEqual) await captchaCheck(body.captcha)
                     await dbConnect()
 
-                    const bisquet = cookie.serialize('fact_session', String(process.env.FACT_SECRET), { httpOnly: true, maxAge: 48 * 60 * 60, sameSite: 'strict', path: '/' })
+                    const bisquet = cookie.serialize('fact_session', String(process.env.FACT_SECRET),
+                        {
+                            httpOnly: true,
+                            maxAge: 48 * 60 * 60,
+                            sameSite: 'strict',
+                            path: '/',
+                            secure: process.env.NODE_ENV === 'development' ? false : true
+                        })
                     res.setHeader("Set-Cookie", bisquet)
 
                     const facts = await Fact.find({ show: false })

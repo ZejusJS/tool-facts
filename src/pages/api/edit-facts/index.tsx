@@ -19,7 +19,7 @@ export default async function handler(
                 if (String(show) !== 'true' && String(show) !== 'false') show = 'true'
                 await dbConnect()
 
-                const facts = await Fact.find({ show })
+                const facts = await Fact.find({ show }, undefined, { sort: { _id: -1 } })
                 res.status(200).json({ facts, success: true })
             } else {
                 console.log(req?.cookies)

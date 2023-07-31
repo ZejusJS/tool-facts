@@ -1,0 +1,92 @@
+.fact-share {
+    .fact-sec {
+        position: relative;
+
+        .fact-div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &.background {
+                opacity: 0.2;
+            }
+        }
+
+        .alert {
+            z-index: 100;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(22, 22, 22);
+            padding: 7px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            visibility: hidden;
+
+            &.show {
+                visibility: visible;
+            }
+
+            button {
+                margin-top: 10px;
+                width: 100%;
+                max-width: 100px;
+                padding: 5px 3px;
+            }
+
+            p {
+                font-size: 1.3rem;
+                text-align: center;
+                margin: 4px 0;
+            }
+
+            .lang-con {
+                margin: 10px 0;
+                font-size: 1.25rem;
+                text-align: center;
+
+                a {
+                    color: rgb(255, 58, 58);
+
+                    &.same {
+                        color: var(--accent3);
+                    }
+                }
+            }
+        }
+
+        .logo-con {
+            height: 200px;
+            background-image: url("https://i.imgur.com/YIbwBgB.png");
+            background-position: center;
+            background-size: 101%;
+            background-repeat: no-repeat;
+            height: 25vw;
+            max-height: 210px;
+            width: 100%;
+            max-width: 1000px;
+
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(26px, 10vw, 2rem);
+            margin: 7px 0 5px 0;
+            text-align: center;
+        }
+
+        .fact {
+            text-align: center;
+            max-width: 800px;
+            font-size: clamp(18px, 3vw, 1.35rem);
+        }
+
+
+    }
+}

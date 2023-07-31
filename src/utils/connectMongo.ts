@@ -10,6 +10,7 @@ async function dbConnect() {
 
     /* connecting to our database */
     const db = await mongoose.connect(String(process.env.MONGODB_URI), {})
+    await mongoose.connection.syncIndexes()
 
     connection.isConnected = db.connections[0].readyState
 }

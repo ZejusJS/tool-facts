@@ -4,10 +4,12 @@ import { ChangeEvent, FormEvent, useRef, useState } from "react"
 
 interface props {
     factFetch: {
-        _id: string,
-        en: string,
-        cs: string,
+        _id: string
+        en: string
+        cs: string
         username: string
+        id: string
+        show: boolean
     }
 }
 
@@ -36,27 +38,33 @@ const index = ({ factFetch }: props) => {
     }
 
     function deleteFact() {
-        axios({
-            method: 'post',
-            url: '/api/approve-fact',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: { approve: false, _id: fact._id },
-            withCredentials: true
-        })
-            .then(data => {
-                console.log(data)
 
-                router.replace(router.asPath, '', { shallow: false, scroll: false })
+        const conf = confirm("Do you want to delete fact?")
+
+        if (conf) {
+            axios({
+                method: 'post',
+                url: '/api/approve-fact',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                data: { approve: false, _id: fact._id },
+                withCredentials: true
             })
-            .catch(e => console.error(e))
+                .then(data => {
+                    console.log(data)
+
+                    router.replace(router.asPath, '', { shallow: false, scroll: false })
+                })
+                .catch(e => console.error(e))
+        }
     }
 
-    function changeFact(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const { name, value } = e.target
+    function changeFact(e: ChangeEvent<HTMLTextAreaElement & HTMLInputElement>) {
+        const { name, value, checked } = e.target
 
         setFact(prev => {
+            if (e.target.type === "checkbox") return { ...prev, [name]: checked }
             return { ...prev, [name]: value }
         })
     }
@@ -65,21 +73,35 @@ const index = ({ factFetch }: props) => {
         <>
             <form onSubmit={e => submitFact(e)}>
                 <div className='form-block'>
-                    <label htmlFor="username">{'Username'}</label>
+                    <label htmlFor={'username' + fact._id}>{'Username'} (1 - 20)</label>
                     <input
                         type="text"
                         name='username'
-                        id='username'
+                        id={'username' + fact._id}
                         placeholder={'Username'}
                         value={fact.username}
                         onChange={changeFact}
+                        maxLength={20}
                     />
                 </div>
                 <div className='form-block'>
-                    <label htmlFor="en">{'English'}</label>
+                    <label htmlFor={'fact-id' + fact._id}>{'ID'} (0 - 50)</label>
+                    <input
+                        type="text"
+                        name='id'
+                        id={'fact-id' + fact._id}
+                        placeholder={'ID'}
+                        value={fact.id}
+                        onChange={changeFact}
+                        maxLength={50}
+                        autoComplete="none"
+                    />
+                </div>
+                <div className='form-block'>
+                    <label htmlFor={'en' + fact._id}>{'English'} (0 - 2800)</label>
                     <textarea
                         name='en'
-                        id='en'
+                        id={'en' + fact._id}
                         placeholder={'English'}
                         value={fact.en}
                         maxLength={process.env.MAX_FACT_LENGTH}
@@ -89,16 +111,26 @@ const index = ({ factFetch }: props) => {
                     />
                 </div>
                 <div className='form-block'>
-                    <label htmlFor="cs">{'Czech'}</label>
+                    <label htmlFor={'cs' + fact._id}>{'Czech'} (0 - 2800)</label>
                     <textarea
                         name='cs'
-                        id='cs'
+                        id={'cs' + fact._id}
                         placeholder={'Czech'}
                         value={fact.cs}
                         maxLength={process.env.MAX_FACT_LENGTH}
                         ref={textCS}
                         onChange={changeFact}
                         onFocus={() => textCS?.current?.classList?.add('expanded')}
+                    />
+                </div>
+                <div className='form-block checkbox'>
+                    <label htmlFor={'show' + fact._id}>{'Showen?'}</label>
+                    <input
+                        type="checkbox"
+                        name='show'
+                        id={'show' + fact._id}
+                        checked={fact.show === true}
+                        onChange={changeFact}
                     />
                 </div>
                 <div className='form-block btns'>

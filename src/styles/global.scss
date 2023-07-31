@@ -9,6 +9,11 @@
     --accent5: #d80000;
 }
 
+@font-face {
+    font-family: 'tool';
+    src: url('../pages/SystemaEncephale.ttf');
+}
+
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
@@ -40,7 +45,8 @@ body {
     min-height: 100vh;
 }
 
-input, textarea {
+input,
+textarea {
     background-color: rgb(37, 37, 37);
     color: white;
     border: 0;

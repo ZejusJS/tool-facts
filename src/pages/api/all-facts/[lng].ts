@@ -23,9 +23,13 @@ export default async function handler(
       try {
         await dbConnect()
 
-        const facts = await Fact.find({ [lang]: { $exists: true }, show: true }).select([`${lang}`, '-_id'])
+        const facts = await Fact.find({
+          [lang]: { $exists: true },
+          show: true,
+          $expr: { $gt: [{ $strLenCP: `$${lang}` }, 0] }
+        }).select([`${lang}`, '-_id'])
 
-        res.setHeader('Cache-Control', "max-age=150, stale-while-revalidate=500000")
+        res.setHeader('Cache-Control', "max-age=170000, stale-while-revalidate=500000")
         res.status(200).json({ facts })
 
       } catch (e) {

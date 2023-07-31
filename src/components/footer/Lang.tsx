@@ -44,7 +44,11 @@ const lang = () => {
                                 scroll={false}
                                 prefetch={false}
                             >
-                                {tNav(`language-name-${lng}`)}
+                                {/* {tNav(`language-name-${lng}`)} */}
+
+                                {
+                                    lng === 'cs' ? "Čeština (cs)" : "English (en)"
+                                }
                             </Link>
                             {
                                 i === (locales.length - 1) ? '' : ', '

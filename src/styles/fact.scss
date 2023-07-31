@@ -25,6 +25,11 @@
         .count {
             color: white;
             font-weight: 500;
+
+            &.blur {
+                filter: blur(3px);
+                -webkit-filter: blur(3px);
+            }
         }
 
         a {
@@ -93,7 +98,7 @@
 
         p {
             font-family: 'PT Mono', monospace;
-            font-size: clamp(14px, 1.05rem, 26px);
+            font-size: clamp(14px, 1.17rem, 26px);
             // background-color: black;
             // background-image: url('https://i.imgur.com/s1Jzbcb.jpg');
             // background-position: 0px 0%;

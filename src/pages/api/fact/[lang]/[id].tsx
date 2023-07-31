@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import dbConnect from '../../../utils/connectMongo';
-import Fact from '../../../utils/models/fact';
+import dbConnect from '../../../../utils/connectMongo';
+import Fact from '../../../../utils/models/fact';
 import cacheData from "memory-cache";
 
 type Data = {
@@ -15,7 +15,8 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    const { query: { lng } } = req
+    return
+    const { query: { lng, id } } = req
     let lang = String(lng)
 
     switch (req.method) {

@@ -8,14 +8,21 @@ const { locales } = i18nConfig
 export function middleware(req: NextRequest) {
   let locale = req.cookies.get('NEXT_LOCALE')?.value
 
+  const reg = new RegExp(`((^${String(process.env.FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${locale})(\/)*?)`, 'g')
+  const reg2 = new RegExp(`((^\/${locale})(\/)*?)`, 'g')
+  
   let redirect = false
   let findLocale = false
   locales.map((lang) => {
-    if (locale && req.url.includes(lang) && locale !== lang) {
-      req.nextUrl.href = req.url.replace(lang, locale)
+    const langReg = new RegExp(`((^${String(process.env.FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${lang})(\/)*?)`, 'g')
+
+    if (locale && req.url.match(langReg) && locale !== lang) {
+      console.log('redirect')
+      req.nextUrl.href = req.url.replace(langReg, process.env.FRONTEND + '/' + locale)
       redirect = true
     }
-    if (req.url.includes(lang)) {
+    if (req.url.match(langReg)) {
+      console.log('find')
       findLocale = true
     }
   })

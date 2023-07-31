@@ -95,10 +95,20 @@
                 max-width: 400px;
             }
 
+            &.checkbox {
+                font-size: 18px;
+                flex-direction: row;
+            }
+
             &.btns {
+                margin-top: 7px;
                 gap: 10px;
                 align-items: center;
                 justify-content: center;
+
+                button {
+                    padding: 5px 10px;
+                }
 
                 .fact-submit {
                     width: 100%;

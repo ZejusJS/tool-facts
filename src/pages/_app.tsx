@@ -20,6 +20,7 @@ import '../styles/landpage.scss'
 import '../styles/fact-approve.scss'
 import '../styles/about.scss'
 import '../styles/error.scss'
+import '../styles/fact-share.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

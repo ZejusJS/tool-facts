@@ -22,8 +22,12 @@ nav {
         }
 
         h1 {
+            position: relative;
+            top: 4px;
+            font-family: tool, sans-serif;
             color: white;
             margin: 0;
+            font-weight: 400;
             font-size: 35px;
             display: block;
 
