@@ -56,35 +56,24 @@
                 }
             }
 
-            .share {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                background-color: transparent;
-                border: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-
-                &:hover,
-                &:active {
-                    svg {
-                        opacity: 1;
-                    }
-                }
+            .share-con {
+                position: relative;
+                height: 60px;
+                width: 100%;
 
                 .copied {
                     font-family: 'Montserrat', sans-serif;
-                    position: relative;
+                    position: absolute;
                     text-align: right;
-                    left: 25px;
-                    transition: left 200ms, opacity 150ms;
+                    right: 45px;
+                    bottom: 8px;
+                    transition: right 200ms, opacity 150ms;
                     opacity: 0;
                     user-select: none;
                     pointer-events: none;
                     max-width: 200px;
                     color: rgb(235, 235, 235);
+                    word-wrap: break-word;
 
                     background-color: rgb(54, 54, 54);
                     border: 2px solid rgb(70, 70, 70);
@@ -93,15 +82,34 @@
                 }
 
                 &.copy .copied {
-                    left: 0px;
+                    right: 60px;
                     opacity: 1;
                 }
 
-                svg {
-                    width: 60px;
-                    height: auto;
-                    stroke: white;
-                    opacity: 0.5;
+                .share {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    background-color: transparent;
+                    border: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+    
+                    &:hover,
+                    &:active {
+                        svg {
+                            opacity: 1;
+                        }
+                    }
+    
+                    svg {
+                        width: 60px;
+                        height: auto;
+                        stroke: white;
+                        opacity: 0.5;
+                    }
                 }
             }
         }
@@ -129,11 +137,11 @@
             // background-repeat: no-repeat;
             // background-attachment: fixed;
             // background-size: contain;
-            white-space: pre-line;
             margin: 0;
             padding: 5px;
             height: 100%;
             overflow: auto;
+            word-wrap: break-word;
 
             opacity: 1;
             transition: opacity 200ms;

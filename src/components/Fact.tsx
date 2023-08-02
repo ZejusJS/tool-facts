@@ -50,7 +50,6 @@ const Fact = () => {
 
     function nextFact() {
         if (facts.length) {
-            console.log(facts[factsCount.current])
             setFact(facts[factsCount.current])
 
             factsCount.current = factsCount.current + 1
@@ -109,15 +108,17 @@ const Fact = () => {
                 />
                 {
                     fact?.id ?
-                        <button
-                            title="Share this fact"
-                            className={`share ${isUrlCopied ? 'copy' : ''}`}
-                            type="button"
-                            onClick={copyFactUrl}
-                        >
+                        <div className={`share-con ${isUrlCopied ? 'copy' : ''}`}>
                             <span className="copied">{t('url-copy')}</span>
-                            <Share />
-                        </button>
+                            <button
+                                title="Share this fact"
+                                className={`share ${isUrlCopied ? 'copy' : ''}`}
+                                type="button"
+                                onClick={copyFactUrl}
+                            >
+                                <Share />
+                            </button>
+                        </div>
                         : ''
                 }
             </div>
