@@ -1,4 +1,6 @@
 {
     "about-title": "This was one of the facts about award-winning band Tool", 
-    "another-facts": "Another facts"
+    "another-facts": "Another facts",
+    "in-lang": "This fact is not translated into your language. Another translation has been chosen.",
+    "pref-lang": "Or you can choose preferred language..."
 }

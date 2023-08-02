@@ -5,9 +5,6 @@ const About = () => {
 
     return (
         <div className="about">
-            <div className="img-con">
-                <img src="https://i.imgur.com/emdfek5.png" alt="" />
-            </div>
             <div className="info-con">
                 <p className="find">{t('find')}</p>
                 <div className="links">

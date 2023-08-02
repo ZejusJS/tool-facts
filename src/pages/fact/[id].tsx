@@ -46,7 +46,8 @@ const FactShare = ({ factJson }: props) => {
                     className={`alert ${alert ? "show" : ''}`}
                     onClick={e => { e.stopPropagation() }}
                 >
-                    <p>{t('in-lang')}</p>
+                    <p>{tS('in-lang')}</p>
+                    <p className="preferred-lang">{tS('pref-lang')}</p>
                     <Lang />
                     <button
                         type="button"

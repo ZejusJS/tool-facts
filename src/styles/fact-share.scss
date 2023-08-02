@@ -53,8 +53,14 @@
                 margin: 4px 0;
             }
 
+            .preferred-lang {
+                color: rgb(199, 199, 199);
+                font-size: 1.15rem;
+                margin-bottom: 0;
+            }
+
             .lang-con {
-                margin: 10px 0;
+                margin: 0 0 10px 0;
                 font-size: 1.25rem;
                 text-align: center;
 
@@ -97,6 +103,7 @@
             max-width: 800px;
             font-size: clamp(17px, 3vw, 1.35rem);
             padding: 0 6px;
+            font-display: block;
         }
     }
 

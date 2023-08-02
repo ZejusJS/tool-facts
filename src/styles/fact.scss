@@ -75,6 +75,7 @@
                 }
 
                 .copied {
+                    font-family: 'Montserrat', sans-serif;
                     position: relative;
                     text-align: right;
                     left: 25px;
@@ -82,8 +83,13 @@
                     opacity: 0;
                     user-select: none;
                     pointer-events: none;
-                    max-width: 180px;
-                    color: rgb(211, 211, 211);
+                    max-width: 200px;
+                    color: rgb(235, 235, 235);
+
+                    background-color: rgb(54, 54, 54);
+                    border: 2px solid rgb(70, 70, 70);
+                    border-radius: 11px;
+                    padding: 1px 7px 1px 2px;
                 }
 
                 &.copy .copied {
