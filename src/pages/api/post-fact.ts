@@ -30,8 +30,8 @@ export default async function handler(
                     || body.en?.length > maxFactLength) return res.status(400).json({ msg: `fact has more than ${maxFactLength} characters` })
 
                 const fact = new Fact({ username: body.username })
-                if (body.cs?.length) fact.cs = body.cs
-                if (body.en?.length) fact.en = body.en
+                if (body?.cs?.length) fact.cs = body.cs.trim()
+                if (body?.en?.length) fact.en = body.en.trim()
 
                 await fact.save()
 

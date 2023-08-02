@@ -23,11 +23,11 @@ export default async function handler(
             let body = req.body
 
             await Fact.findOneAndUpdate({ _id }, {
-                id: body.id,
-                username: body.username,
-                cs: body.cs,
-                en: body.en,
-                show: body.show
+                id: body?.id,
+                username: body?.username?.trim(),
+                cs: body?.cs?.trim(),
+                en: body?.en?.trim(),
+                show: body?.show
             }, { runValidators: true })
 
             res.status(200).json({ success: true })
