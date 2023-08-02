@@ -27,7 +27,7 @@ export default async function handler(
           [lang]: { $exists: true },
           show: true,
           $expr: { $gt: [{ $strLenCP: `$${lang}` }, 0] }
-        }).select([`${lang}`, '-_id'])
+        }).select([`${lang}`, 'id', '-_id'])
 
         res.setHeader('Cache-Control', "max-age=170000, stale-while-revalidate=500000")
         res.status(200).json({ facts })

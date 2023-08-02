@@ -1,7 +1,8 @@
 {
-    "title": "Facts about award-winning band Tool",
+    "title": "Facts about award-winning band <0>TOOL</0>",
     "next-fact": "LOAD NEXT FACT",
     "did-you-know": "AND DID YOU KNOW THAT...",
+    "url-copy": "URL of the fact copied to cliboard",
     "new-facts": {
         "q": "Do you have any new facts?",
         "a": "Share it with us!"

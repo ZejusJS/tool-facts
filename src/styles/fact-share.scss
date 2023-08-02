@@ -1,12 +1,19 @@
 .fact-share {
+    padding: 0;
+
     .fact-sec {
         position: relative;
+        white-space: pre-line;
+        min-height: 100svh;
+        padding-top: 50px;
+        padding-bottom: 40px;
 
         .fact-div {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            height: 100%;
 
             &.background {
                 opacity: 0.2;
@@ -56,6 +63,8 @@
 
                     &.same {
                         color: var(--accent3);
+                        cursor: auto;
+                        pointer-events: none;
                     }
                 }
             }
@@ -76,17 +85,63 @@
         }
 
         h2 {
-            font-size: clamp(26px, 10vw, 2rem);
+            font-size: clamp(25px, 10vw, 2rem);
             margin: 7px 0 5px 0;
             text-align: center;
         }
 
         .fact {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
             text-align: center;
             max-width: 800px;
-            font-size: clamp(18px, 3vw, 1.35rem);
+            font-size: clamp(17px, 3vw, 1.35rem);
+            padding: 0 6px;
+        }
+    }
+
+    .share-about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 90px;
+
+        h3 {
+            font-size: 1.45rem;
+            margin-top: 5px;
+            text-align: center;
         }
 
+        .another-facts {
+            font-size: 1.25rem;
+            color: white;
+            background-color: var(--accent2);
+            padding: 12px 20px;
+            border-radius: 11px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
 
+            outline: 2px solid rgb(126, 126, 126);
+            outline-offset: 3px;
+
+            .exit-svg {
+                stroke: white;
+                height: 1.5rem;
+                width: auto;
+                flex-shrink: 0;
+            }
+
+            &:hover {
+                background-color: var(--accent3);
+                outline-color: rgb(167, 167, 167);
+
+                &:active {
+                    background-color: var(--accent4);
+                }
+            }
+        }
     }
 }

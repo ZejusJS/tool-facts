@@ -3,13 +3,8 @@ import { useEffect, useState } from "react"
 import { Translate } from 'next-translate';
 import LinkText from './LinkText';
 import Trans from 'next-translate/Trans'
-import Link from "next/link";
 
-interface props {
-    t: Translate
-}
-
-const FactsCount = ({ t }: props) => {
+const FactsCount = () => {
     const [langs, setLangs] = useState({
         factsCS: 0,
         factsEN: 0

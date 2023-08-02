@@ -1,6 +1,7 @@
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { NextPageContext } from 'next/types'
+import { useState } from 'react'
 
 let imgs = [
     "https://res.cloudinary.com/djlseprqx/image/upload/v1688806239/random/tool1_dhcsbl.webp",
@@ -18,9 +19,10 @@ let imgs = [
 
 function Error({ statusCode }: { statusCode: number }) {
     const { t } = useTranslation('error')
+    const [randomNum, setRandomNum] = useState(-1);
 
     function Image() {
-        let randomNum = Math.floor(Math.random() * (imgs.length - 1))
+        if (randomNum < 0) setRandomNum(Math.floor(Math.random() * (imgs.length - 1)))
         return (
             <img src={imgs[randomNum]} alt="Tool Image" />
         )

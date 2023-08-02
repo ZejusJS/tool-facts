@@ -12,32 +12,6 @@
         text-align: center;
     }
 
-    .total-facts {
-        color: rgb(199, 199, 199);
-        font-size: clamp(14px, 1.1rem, 25px);
-        text-align: center;
-
-        svg {
-            height: 14px;
-            width: auto;
-        }
-
-        .count {
-            color: white;
-            font-weight: 500;
-
-            &.blur {
-                filter: blur(3px);
-                -webkit-filter: blur(3px);
-            }
-        }
-
-        a {
-            white-space: nowrap;
-            color: rgb(207, 0, 62);
-        }
-    }
-
     .fact {
         display: flex;
         flex-direction: column;
@@ -51,6 +25,7 @@
         word-wrap: break-word;
         flex-wrap: nowrap;
         box-shadow: 0 0 30px -8px rgba(80, 80, 80, 0.801);
+        position: relative;
 
         .fact-wrapper {
             display: flex;
@@ -80,6 +55,49 @@
                     pointer-events: none;
                 }
             }
+
+            .share {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-color: transparent;
+                border: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &:hover,
+                &:active {
+                    svg {
+                        opacity: 1;
+                    }
+                }
+
+                .copied {
+                    position: relative;
+                    text-align: right;
+                    left: 25px;
+                    transition: left 200ms, opacity 150ms;
+                    opacity: 0;
+                    user-select: none;
+                    pointer-events: none;
+                    max-width: 180px;
+                    color: rgb(211, 211, 211);
+                }
+
+                &.copy .copied {
+                    left: 0px;
+                    opacity: 1;
+                }
+
+                svg {
+                    width: 60px;
+                    height: auto;
+                    stroke: white;
+                    opacity: 0.5;
+                }
+            }
         }
 
         .did-you-know {
@@ -97,7 +115,7 @@
         }
 
         p {
-            font-family: 'PT Mono', monospace;
+            font-family: 'PT Mono', 'Montserrat', monospace;
             font-size: clamp(14px, 1.17rem, 26px);
             // background-color: black;
             // background-image: url('https://i.imgur.com/s1Jzbcb.jpg');
@@ -141,4 +159,30 @@
 .fact-form {
     display: flex;
     width: 100%;
+}
+
+.total-facts {
+    color: rgb(199, 199, 199);
+    font-size: clamp(14px, 1.1rem, 25px);
+    text-align: center;
+
+    svg {
+        height: 14px;
+        width: auto;
+    }
+
+    .count {
+        color: white;
+        font-weight: 500;
+
+        &.blur {
+            filter: blur(3px);
+            -webkit-filter: blur(3px);
+        }
+    }
+
+    a {
+        white-space: nowrap;
+        color: rgb(207, 0, 62);
+    }
 }

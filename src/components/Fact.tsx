@@ -1,11 +1,13 @@
 import axios from "axios"
 import useTranslation from "next-translate/useTranslation"
+import Link from "next/link"
 import { RefObject, useEffect, useRef, useState } from "react"
+import Share from '../svg/Share'
 
 const Fact = () => {
     const { t, lang } = useTranslation('common')
-    
-    const [fact, setFact] = useState('')
+
+    const [fact, setFact] = useState({ fact: '', id: '' })
     const [facts, setFacts] = useState([])
     const [loadingFact, setLoadingFact] = useState(true)
 
@@ -27,6 +29,11 @@ const Fact = () => {
             },
         })
             .then(data => {
+                data.data.facts = data.data.facts.map((f: any) => {
+                    f['fact'] = f[lang]
+                    delete f[lang]
+                    return f
+                })
                 setTimeout(() => {
                     shuffleFacts(data.data.facts)
                 }, 200);
@@ -36,14 +43,15 @@ const Fact = () => {
 
     useEffect(() => {
         if (facts?.length) {
-            setFact(facts[0][lang])
+            setFact(facts[0])
             factsCount.current = 1
         }
     }, [facts])
 
     function nextFact() {
         if (facts.length) {
-            setFact(facts[factsCount.current][lang])
+            console.log(facts[factsCount.current])
+            setFact(facts[factsCount.current])
 
             factsCount.current = factsCount.current + 1
 
@@ -71,6 +79,19 @@ const Fact = () => {
         })
     }
 
+    const [isUrlCopied, setIsUrlCopied] = useState(false)
+
+    function copyFactUrl() {
+        if (navigator?.clipboard) {
+            navigator.clipboard.writeText(process.env.NEXT_PUBLIC_FRONTEND + '/fact/' + fact.id)
+
+            setIsUrlCopied(true)
+            setTimeout(() => {
+                setIsUrlCopied(false)
+            }, 3000);
+        }
+    }
+
     return (
         <div className='fact'>
             <div className='fact-wrapper'>
@@ -79,13 +100,26 @@ const Fact = () => {
                 </h3>
 
                 <p className={loadingFact ? 'hidden' : ''}>
-                    {fact}
+                    {fact.fact}
                 </p>
                 <img
                     ref={eyeRef}
                     className={loadingFact ? '' : 'hidden'}
                     src="https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif" alt=""
                 />
+                {
+                    fact?.id ?
+                        <button
+                            title="Share this fact"
+                            className={`share ${isUrlCopied ? 'copy' : ''}`}
+                            type="button"
+                            onClick={copyFactUrl}
+                        >
+                            <span className="copied">{t('url-copy')}</span>
+                            <Share />
+                        </button>
+                        : ''
+                }
             </div>
             <button
                 type='button'

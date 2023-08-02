@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
     --accent1: #960a0d;
@@ -18,8 +19,13 @@
 /* Firefox */
 * {
     box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: #808080 #ffffff00;
+}
+
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #808080 #ffffff00;
+    }
 }
 
 /* Chrome, Edge, and Safari */
@@ -69,6 +75,11 @@ button {
             background-color: var(--accent3);
         }
     }
+}
+
+.tool-font {
+    font-family: tool, sans-serif;
+    // font-weight: 400;
 }
 
 a {

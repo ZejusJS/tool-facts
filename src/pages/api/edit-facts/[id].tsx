@@ -20,7 +20,6 @@ export default async function handler(
     if (req?.cookies?.fact_session === process.env.FACT_SECRET) {
         try {
             await dbConnect()
-            console.log(req.body)
             let body = req.body
 
             await Fact.findOneAndUpdate({ _id }, {
@@ -33,7 +32,7 @@ export default async function handler(
 
             res.status(200).json({ success: true })
         } catch (e: any) {
-            console.error(e._message);
+            console.error(e);
             let msg: any = { success: false }
             if (e?.code) msg.code = e.code;
             if (e?.errors?.kind) msg.error = e.errors.kind;

@@ -9,6 +9,6 @@ namespace NodeJS {
         FACT_PASSWORD: string;
         FACT_USERNAME: string;
         FACT_SECRET: string;
-        FRONTEND: string;
+        NEXT_PUBLIC_FRONTEND: string;
     }
 }

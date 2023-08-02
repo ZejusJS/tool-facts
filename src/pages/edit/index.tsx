@@ -45,7 +45,7 @@ const index = ({ facts }: props) => {
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
     if (!query?.show?.length) query.show === 'true'
 
-    const res = await fetch(`${process.env.FRONTEND}/api/edit-facts?show=${query.show}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND}/api/edit-facts?show=${query.show}`, {
         method: 'get',
         headers: {
             "Content-Type": "application/json",

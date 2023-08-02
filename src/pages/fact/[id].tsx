@@ -7,6 +7,9 @@ import Fact from '../../utils/models/fact';
 import { locales } from '../../../i18n'
 import { useEffect, useState } from "react";
 import Lang from "@/components/footer/Lang";
+import Link from "next/link";
+import Exit from '../../svg/Exit'
+import FactsCount from '@/components/FactsCount'
 
 interface props {
     factJson: string
@@ -14,6 +17,7 @@ interface props {
 
 const FactShare = ({ factJson }: props) => {
     const { t, lang } = useTranslation('common')
+    const { t: tS } = useTranslation('share-fact')
     const router = useRouter();
 
     const [fact, setFact] = useState(JSON.parse(factJson))
@@ -32,7 +36,6 @@ const FactShare = ({ factJson }: props) => {
         let found = locales.find(locale => {
             return fact[locale]?.length
         })
-        console.log(found)
         return String(found)
     }
 
@@ -51,8 +54,8 @@ const FactShare = ({ factJson }: props) => {
                     >
                         OK</button>
                 </div>
+                <div className="logo-con"></div>
                 <div className={`fact-div ${alert ? "background" : ''}`}>
-                    <div className="logo-con"></div>
                     <h2>{t('did-you-know')}</h2>
                     {fact[lang]?.length ?
                         <p className="fact">{fact[lang]}</p>
@@ -61,6 +64,16 @@ const FactShare = ({ factJson }: props) => {
                     }
                     {/* <div className="logo-con"></div> */}
                 </div>
+            </section>
+            <section className="share-about">
+                <h3>{tS('about-title')}</h3>
+                <Link
+                    href={'/'}
+                    className="another-facts"
+                >
+                    {tS('another-facts')} <Exit />
+                </Link>
+                <FactsCount />
             </section>
         </main>
     )
@@ -89,9 +102,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query, local
 
         if (!fact) {
             return {
-                props: {
-                    factJson: JSON.stringify({ error: 'NOTFOUND' })
-                }
+                notFound: true
             }
         }
 

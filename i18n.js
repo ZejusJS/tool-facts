@@ -3,6 +3,7 @@ module.exports = {
     defaultLocale: 'cs', 
     pages: {
         '*': ['common', 'nav', 'form', 'about', 'error'],
+        "/fact/[id]": ['share-fact']
     },
     loadLocaleFrom: (lang, ns) =>
         // You can use a dynamic import, fetch, whatever. You should
