@@ -69,6 +69,12 @@ const index = ({ factFetch }: props) => {
         })
     }
 
+    function copyFactUrl() {
+        if (navigator?.clipboard) {
+            navigator.clipboard.writeText(process.env.NEXT_PUBLIC_FRONTEND + '/fact/' + fact.id)
+        }
+    }
+
     return (
         <>
             <form onSubmit={e => submitFact(e)}>
@@ -96,6 +102,13 @@ const index = ({ factFetch }: props) => {
                         maxLength={50}
                         autoComplete="none"
                     />
+                    <button
+                        type="button"
+                        onClick={copyFactUrl}
+                        className="copy-url"
+                    >
+                        Copy URL
+                    </button>
                 </div>
                 <div className='form-block'>
                     <label htmlFor={'en' + fact._id}>{'English'} (0 - 2800)</label>

@@ -99,8 +99,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query, local
             // }
         }).select([`cs`, 'en', 'id', '-_id'])
 
-        console.log(fact)
-
         if (!fact) {
             return {
                 notFound: true
