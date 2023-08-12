@@ -10,5 +10,6 @@ namespace NodeJS {
         FACT_USERNAME: string;
         FACT_SECRET: string;
         NEXT_PUBLIC_FRONTEND: string;
+        NEXT_PUBLIC_DEFAULT_LOCALE: string;
     }
 }

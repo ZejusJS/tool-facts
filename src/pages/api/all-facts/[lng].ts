@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from '../../../utils/connectMongo';
 import Fact from '../../../utils/models/fact';
-import cacheData from "memory-cache";
+// import cacheData from "memory-cache";
 
 type Data = {
   success?: boolean

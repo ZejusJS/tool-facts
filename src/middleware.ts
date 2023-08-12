@@ -28,7 +28,7 @@ export function middleware(req: NextRequest) {
   })
   
   if (redirect) return NextResponse.redirect(req.nextUrl)
-  else if (!findLocale && locale && locale !== 'cs') {
+  else if (!findLocale && locale && locale !== process.env.NEXT_PUBLIC_DEFAULT_LOCALE) {
     req.nextUrl.pathname = req.nextUrl.pathname.replace(/\//, '/' + locale + '/')
     return NextResponse.redirect(req.nextUrl)
   }

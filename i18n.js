@@ -1,8 +1,8 @@
 module.exports = {
     locales: ['en', 'cs'], 
-    defaultLocale: 'cs', 
+    defaultLocale: 'en', 
     pages: {
-        '*': ['common', 'nav', 'form', 'about', 'error'],
+        '*': ['common', 'nav', 'form', 'about', 'error', "meta"],
         "/fact/[id]": ['share-fact']
     },
     loadLocaleFrom: (lang, ns) =>

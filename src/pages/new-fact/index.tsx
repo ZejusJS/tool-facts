@@ -10,7 +10,7 @@ const index = () => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-  if (process.env.NODE_ENV !== 'development') {
+  if (!(req.cookies['fact_session'] === process.env.FACT_SECRET)) {
     return {
       redirect: {
         destination: '/',

@@ -4,10 +4,9 @@ import FactsCount from '@/components/FactsCount'
 import Fact from '@/components/Fact'
 import About from '@/components/About'
 import Trans from 'next-translate/Trans'
+import { useRef } from 'react'
 
-export default function Home() {
-  const { t } = useTranslation('common')
-
+export default function Home() {  
   return (
     <>
       <main>
