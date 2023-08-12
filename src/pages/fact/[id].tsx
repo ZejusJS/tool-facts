@@ -80,9 +80,14 @@ const FactShare = ({ factJson }: props) => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, query, locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res, query, locale }) => {
     let lang: any = query.lang
     let id: any = query.id
+
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=170000, stale-while-revalidate=100000'
+    )
 
     try {
         await dbConnect()
