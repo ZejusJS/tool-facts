@@ -1,5 +1,5 @@
 .links-list {
-    word-wrap: break-word;
+    word-break: break-word;
     padding: 10px;
     max-width: 800px;
     margin: 0 auto;
@@ -11,13 +11,14 @@
 
     ul {
         margin-top: 10px;
-        padding-left: 35px;
+        padding-left: 10px;
+        list-style: none;
 
         a {
             display: inline-block;
             padding: 3px 0;
             font-size: 1.15em;
-            text-decoration: none;
+            text-decoration: underline;
             color: white;
 
             &:hover {
