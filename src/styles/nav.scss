@@ -8,8 +8,10 @@ nav {
     overflow: hidden;
     z-index: 1000;
 
-    &.menu-opened {
-        padding-right: var(--scroll-width);
+    @media (hover: hover) {
+        &.menu-opened {
+            padding-right: var(--scroll-width);
+        }
     }
 
     .nav-con {

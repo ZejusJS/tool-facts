@@ -108,9 +108,14 @@ table {
 }
 
 body {
+    @media (hover: hover) {
+        &.menu-opened {
+            padding-right: var(--scroll-width);
+        }
+    }
+
     &.menu-opened {
         overflow: hidden;
-        padding-right: var(--scroll-width);
     }
 }
 
