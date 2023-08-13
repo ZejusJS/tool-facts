@@ -25,7 +25,7 @@ const index = () => {
                 </div>
                 <div className='menu-blocks'>
                     <div className='menu-block link'>
-                        <Link href='/sources'>
+                        <Link href='/'>
                             <span className='link-text'>{t('links.home')}</span>
                             <span className='link-tip'>
                                 {t('links.home-tip')}
