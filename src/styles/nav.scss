@@ -45,6 +45,7 @@ nav {
         .ham-con {
             width: 46px;
             height: 100%;
+            flex-shrink: 0;
 
             button {
                 background-color: transparent;
@@ -78,9 +79,20 @@ nav {
                 width: 36px;
                 box-shadow: 0 0 11px -4px rgba(0, 0, 0, 0.753);
             }
+        }
 
-            @media (max-width: 300px) {
+        @media (max-width: 310px) {
+            justify-content: flex-start;
+            gap: 5px;
+
+            .lang-con {
                 display: none;
+            }
+        }
+
+        @media (max-width: 270px) {
+            h1 {
+                visibility: hidden;
             }
         }
     }
