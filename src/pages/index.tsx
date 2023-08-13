@@ -4,7 +4,7 @@ import FactsCount from '@/components/FactsCount'
 import Fact from '@/components/Fact'
 import About from '@/components/About'
 import Trans from 'next-translate/Trans'
-import { useRef } from 'react'
+// import { useRef } from 'react'
 
 export default function Home() {  
   return (

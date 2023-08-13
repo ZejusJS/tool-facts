@@ -14,7 +14,8 @@ let imgs = [
     "https://res.cloudinary.com/djlseprqx/image/upload/v1688806603/random/tool9_nh3rmy.webp",
     "https://i.imgur.com/emdfek5.png",
     "https://res.cloudinary.com/djlseprqx/image/upload/v1688806188/random/tool0.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806238/random/tool8_bqvj8y.webp"
+    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806238/random/tool8_bqvj8y.webp",
+    "https://i.imgur.com/R6a6ape.jpg",
 ]
 
 function Error({ statusCode }: { statusCode: number }) {

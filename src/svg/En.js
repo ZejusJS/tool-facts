@@ -1,6 +1,6 @@
 export default function En() {
     return (
-        <svg viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 2 50 26" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0h50v30H0z" fill="#012169" />
             <path d="M5.828 0H0v3.5L44.172 30H50v-3.5z" fill="#fff" />
             <path d="M50 3.5V0h-5.828L0 26.5V30h5.828z" fill="#fff" />

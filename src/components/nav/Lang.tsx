@@ -4,11 +4,14 @@ import { SiteState } from '@/context'
 import EnFlag from '../../svg/En'
 import CsFlag from '../../svg/Cs'
 import { useRouter } from 'next/router'
+import { Translate } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation'
 
 const { locales } = i18nConfig
 
 const lang = () => {
-    const { tNav, lang }: typeof SiteState.arguments = SiteState()
+    const {t} = useTranslation('nav')
+    const { lang } = SiteState()
     const router = useRouter()
 
     function url(lng: string): string {
@@ -24,7 +27,7 @@ const lang = () => {
 
     function setCookieDoc(lng: string, e: React.MouseEvent<HTMLAnchorElement>) {
         e.preventDefault()
-        
+
         if (lng !== lang) {
             document.cookie = `NEXT_LOCALE=${lng};path=/`
 
@@ -45,8 +48,9 @@ const lang = () => {
                             key={lng}
                             onClick={(e) => setCookieDoc(lng, e)}
                             scroll={false}
-                            title={tNav(`language-name-${lng}`)}
+                            title={t(`language-name-${lng}`)}
                             prefetch={false}
+                            aria-label={lng === 'en' ? "Change the language to english" : "Změnit jazyk na češtinu"}
                         >
                             {
                                 lng === 'en' ?

@@ -7,9 +7,10 @@ const { locales } = i18nConfig
 // This function can be marked `async` if using `await` inside
 export function middleware(req: NextRequest) {
   let locale = req.cookies.get('NEXT_LOCALE')?.value
+  if (!locale) return 
 
-  const reg = new RegExp(`((^${String(process.env.NEXT_PUBLIC_FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${locale})(\/)*?)`, 'g')
-  const reg2 = new RegExp(`((^\/${locale})(\/)*?)`, 'g')
+  // const reg = new RegExp(`((^${String(process.env.NEXT_PUBLIC_FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${locale})(\/)*?)`, 'g')
+  // const reg2 = new RegExp(`((^\/${locale})(\/)*?)`, 'g')
   
   let redirect = false
   let findLocale = false

@@ -1,0 +1,129 @@
+.menu {
+    position: fixed;
+    z-index: 9999;
+    background-color: var(--dark-accent-1);
+    height: 100svh;
+    width: 100%;
+    max-width: 0px;
+    transition: max-width 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    overflow: hidden;
+
+    .menu-con {
+        position: relative;
+        width: 100vw;
+        max-width: 500px;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .menu-header {
+        position: sticky;
+        top: 0px;
+        height: 80px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--dark-accent-1);
+        border-bottom: 1px solid rgb(66, 66, 66);
+
+        .back-btn {
+            border: 0;
+            background-color: transparent;
+            padding: 0;
+            border: 0;
+            height: 80%;
+
+            .back-svg {
+                width: auto;
+                height: 100%;
+                fill: white;
+                transition: transform 300ms cubic-bezier(0.47, 0, 0.745, 0.715);
+                transform: rotateY(180deg);
+            }
+        }
+
+        .lang-con {
+            width: 50px;
+        }
+    }
+
+    .menu-blocks {
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+
+        .menu-block {
+            border-color: grey;
+            border-width: 0 0 1px 0;
+            border-style: solid;
+            padding: 3px;
+
+            &:nth-child(1) {
+                border-width: 1px 0 1px 0;
+            }
+
+            &:last-child{
+                border-width: 0 0 0 0;
+            }
+
+            &.link {
+                display: flex;
+                align-items: center;
+                padding: 8px;
+
+                .link-tip {
+                    display: block;
+                    overflow: hidden;
+                    padding-left: 5px;
+                    font-size: 0.9rem;
+                    margin: 0 0 0 0;
+                    color: var(--text-color-mid);
+                    text-decoration: unset;
+
+                    transition: max-height 300ms;
+                    max-height: 0px;
+                }
+
+                &:hover,
+                &:focus,
+                &:focus-within {
+                    .link-tip {
+                        max-height: 150px;
+                    }
+                }
+            }
+        }
+
+        a {
+            display: inline-block;
+            color: white;
+            font-size: 1.3em;
+            width: 100%;
+            text-decoration: none;
+
+            &:hover {
+                .link-text {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .more-coming {
+            font-size: 2em;
+            font-weight: 500;
+            margin: 10px 0;
+            color: var(--text-color-mid);
+        }
+    }
+
+    &.opened {
+        max-width: 500px;
+
+        .menu-header {
+            .back-svg {
+                transform: rotateY(0deg);
+            }
+        }
+    }
+}

@@ -1,19 +1,49 @@
 import useTranslation from "next-translate/useTranslation";
 import { NextRouter, useRouter } from "next/router";
-import React, { ReactNode, createContext, useContext } from "react";
+import React, { Dispatch, ReactNode, createContext, useContext, useEffect, useState } from "react";
 
-const SiteContext = createContext({});
+interface IThemeContext {
+    menuOpened: boolean
+    setMenuOpened: Dispatch<React.SetStateAction<boolean>>
+    lang: string
+    router: any
+}
+
+const SiteContext = createContext<IThemeContext>({
+    menuOpened: false,
+    setMenuOpened: function (value: React.SetStateAction<boolean>): void {
+        console.error('function error');
+    },
+    lang: "",
+    router: ''
+});
 
 export const SiteProvider = ({ children }: { children: ReactNode }) => {
-    const { t: tNav, lang } = useTranslation('nav')
+    const { lang } = useTranslation('nav')
     const router: NextRouter = useRouter()
+    const [menuOpened, setMenuOpened] = useState(false);
+
+    useEffect(() => {
+        if (menuOpened) {
+            document.body.classList.add('menu-opened')
+        } else {
+            document.body.classList.remove('menu-opened')
+        }
+    }, [menuOpened])
+
+    useEffect(() => {
+        if (menuOpened) {
+            setMenuOpened(false);
+        }
+    }, [router]);
 
     return (
         <SiteContext.Provider
             value={{
-                tNav,
                 lang,
-                router
+                router,
+                menuOpened,
+                setMenuOpened
             }}
         >
             {children}

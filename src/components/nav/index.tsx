@@ -1,10 +1,13 @@
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Lang from "./Lang"
 import { SiteState } from '@/context'
 import Link from "next/link";
+import HamburgerSvg from '../../svg/HamburgerMenu'
+import useTranslation from "next-translate/useTranslation";
 
 const index = () => {
-    const { tNav: t, lang, router }: typeof SiteState.arguments = SiteState()
+    const { menuOpened, setMenuOpened } = SiteState()
+    const {t} = useTranslation('nav')
 
     let defaultTop = -60
     let maxTop = 0
@@ -46,14 +49,27 @@ const index = () => {
     return (
         <nav
             ref={navRef}
+            role="navigation"
+            className={menuOpened ? 'menu-opened' : ''}
         >
             <div className="nav-con">
+                <div className="ham-con">
+                    <button
+                    aria-label="Open the menu" 
+                    title='Open the menu'
+                    type="button"
+                    aria-expanded={`${menuOpened}`}
+                    onClick={() => setMenuOpened(prev => !prev)}
+                    >
+                        <HamburgerSvg />
+                    </button>
+                </div>
                 <Link href={'/'}>
                     <h1>
                         {t('title')}
                     </h1>
                 </Link>
-                <Lang />
+                <Lang  />
             </div>
         </nav>
     )

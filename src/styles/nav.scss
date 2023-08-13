@@ -8,11 +8,15 @@ nav {
     overflow: hidden;
     z-index: 1000;
 
+    &.menu-opened {
+        padding-right: var(--scroll-width);
+    }
+
     .nav-con {
         display: flex;
         position: relative;
         padding: 3px;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         height: 100%;
 
@@ -38,20 +42,40 @@ nav {
             }
         }
 
-        .lang-con {
-            position: absolute;
-            display: flex;
-            top: 50%;
-            right: 5px;
-            transform: translate(0%, -50%);
-            object-fit: cover;
-            width: 36px;
-            height: auto;
+        .ham-con {
+            width: 46px;
+            height: 100%;
+
+            button {
+                background-color: transparent;
+                border: 0;
+                padding: 0;
+                margin: 0;
+
+                &:hover {
+                    svg {
+                        fill: black;
+                        cursor: pointer;
+                    }
+                }
+            }
 
             svg {
-                height: auto;
-                height: 100%;
                 width: 100%;
+                height: auto;
+                fill: white;
+                transition: fill 250ms;
+            }
+        }
+
+        .lang-con {
+            display: flex;
+            justify-content: center;
+            width: 46px;
+
+            svg {
+                height: 100%;
+                width: 36px;
                 box-shadow: 0 0 11px -4px rgba(0, 0, 0, 0.753);
             }
 

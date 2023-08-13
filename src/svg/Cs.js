@@ -8,7 +8,7 @@ export default function Cs() {
       imageRendering="optimizeQuality"
       fillRule="evenodd"
       clipRule="evenodd"
-      viewBox="0 0 51.28 35.67"
+      viewBox="0 2 51 32"
     >
       <g fillRule="nonzero">
         <path
