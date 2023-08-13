@@ -1,5 +1,7 @@
 {
     "links": {
+        "home": "Homepage",
+        "home-tip": "Main page with facts generator",
         "sources": "Sources of the facts",
         "sources-tip": "Links to the sources of most facts"
     },

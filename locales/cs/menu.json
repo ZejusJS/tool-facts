@@ -1,5 +1,7 @@
 {
     "links": {
+        "home": "Domovská stránka",
+        "home-tip": "Hlavní stránka s generátorem faktů",
         "sources": "Zdroje faktů",
         "sources-tip": "Odkazy na zdroje většiny faktů"
     },

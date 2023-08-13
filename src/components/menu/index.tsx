@@ -5,7 +5,7 @@ import Lang from '@/components/nav/Lang'
 import useTranslation from 'next-translate/useTranslation'
 
 const index = () => {
-    const {t} = useTranslation('menu');
+    const { t } = useTranslation('menu');
     const { menuOpened, setMenuOpened } = SiteState()
 
     return (
@@ -24,6 +24,14 @@ const index = () => {
                     <Lang />
                 </div>
                 <div className='menu-blocks'>
+                    <div className='menu-block link'>
+                        <Link href='/sources'>
+                            <span className='link-text'>{t('links.home')}</span>
+                            <span className='link-tip'>
+                                {t('links.home-tip')}
+                            </span>
+                        </Link>
+                    </div>
                     <div className='menu-block link'>
                         <Link href='/sources'>
                             <span className='link-text'>{t('links.sources')}</span>
