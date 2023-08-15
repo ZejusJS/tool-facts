@@ -19,11 +19,51 @@ import '../styles/fact-share.scss'
 import '../styles/sources.scss'
 import '../styles/menu.scss'
 
+import { Inconsolata, Quicksand, Montserrat, Roboto } from 'next/font/google';
+import localFont from 'next/font/local';
+
+const inconsolata = Inconsolata({
+  weight: '400',
+  subsets: ['latin-ext'],
+});
+
+const roboto = Roboto({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
+
+const montserrat = Montserrat({
+  weight: ['400', '300'],
+  subsets: ['latin']
+});
+
+const quicksand = Quicksand({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
+
+const tool = localFont({
+  src: [
+    {
+      path: './SystemaEncephale.ttf',
+      weight: '400',
+    }
+  ],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <style jsx global>{`
+        :root {
+          --inconsolata: ${inconsolata.style.fontFamily};
+          --roboto: ${roboto.style.fontFamily};
+          --montserrat: ${montserrat.style.fontFamily};
+          --quicksand: ${quicksand.style.fontFamily};
+          --tool: ${tool.style.fontFamily};
+        }
+      `}</style>
       <SiteProvider>
         <Meta />
         <Menu />

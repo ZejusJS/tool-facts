@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Quicksand:wght@400;500;600;700&family=PT+Mono&display=optional');
 
 
 :root {
@@ -12,6 +11,7 @@
     --accent5: #d80000;
     --dark-accent-1: rgb(15, 15, 15);
     --dark-accent-2: rgb(20, 20, 20);
+    --dark-accent-border-1: rgb(66, 66, 66);
     --text-color-high: #ffffff;
     --text-color-mid: rgb(187, 187, 187);
     --text-color-low: rgb(138, 138, 138);
@@ -19,12 +19,6 @@
     --scroll-width: 6px;
 }
 
-@font-face {
-    font-family: 'tool';
-    src: url('../pages/SystemaEncephale.ttf');
-}
-
-/* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
     box-sizing: border-box;
@@ -58,7 +52,7 @@ body {
     background-color: var(--dark-accent-1);
     color: white;
     min-height: 100vh;
-    font-family: Roboto, sans-serif;
+    font-family: var(--roboto), sans-serif;
 }
 
 input,
@@ -88,9 +82,9 @@ button {
 }
 
 .tool-font {
-    font-family: tool, sans-serif;
+    font-family: var(--tool), sans-serif;
     // font-weight: 400;
-    font-display: block;
+    font-display: optional;
 }
 
 a {

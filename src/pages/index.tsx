@@ -6,10 +6,10 @@ import About from '@/components/About'
 import Trans from 'next-translate/Trans'
 // import { useRef } from 'react'
 
-export default function Home() {  
+export default function Home() {
   return (
     <>
-      <main>
+      <main className='fact-main'>
         <section className='fact-con'>
           <h2>
             <Trans
@@ -21,6 +21,8 @@ export default function Home() {
           </h2>
           <Fact />
           <FactsCount />
+        </section>
+        <section>
           <About />
         </section>
       </main>

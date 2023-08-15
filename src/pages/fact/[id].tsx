@@ -81,19 +81,18 @@ const FactShare = ({ factJson }: props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res, query, locale }) => {
-    let lang: any = query.lang
     let id: any = query.id
 
     res.setHeader(
         'Cache-Control',
-        'public, s-maxage=350000, stale-while-revalidate=100000'
+        's-maxage=350000'
     )
 
     try {
         await dbConnect()
 
-        console.log(locale)
-        console.log(id)
+        // console.log(locale)
+        // console.log(id)
 
         const fact = await Fact.findOne({
             // [String(locale)]: { $exists: true },

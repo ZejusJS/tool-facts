@@ -22,7 +22,7 @@ export default async function handler(
             try {
                 await dbConnect()
 
-                res.setHeader('Cache-Control', "max-age=25000, s-max-age=250000")
+                res.setHeader('Cache-Control', "max-age=25000, s-max-age=400000")
 
                 const factsCS = await Fact.count({ cs: { $exists: true }, show: true, $expr: { $gt: [{ $strLenCP: `$cs` }, 0] } })
                 const factsEN = await Fact.count({ en: { $exists: true }, show: true, $expr: { $gt: [{ $strLenCP: `$en` }, 0] } })
