@@ -13,6 +13,9 @@ async function dbConnect() {
     await mongoose.connection.syncIndexes()
 
     connection.isConnected = db.connections[0].readyState
+    if (db) {
+        return db.connection
+    }
 }
 
 export default dbConnect

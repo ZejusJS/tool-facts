@@ -11,9 +11,11 @@ main.error {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    word-break: break-word;
 
     h3 {
         font-size: 2rem;
+        margin-top: 170px;
     }
 
     h4 {
@@ -21,18 +23,56 @@ main.error {
     }
 
     img {
-        width: auto;
         width: 100%;
-        background: url('https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif') no-repeat scroll 0 0;
+        height: 60vw;
+        max-height: 350px;
+        object-fit: cover;
+        background: url('https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif') no-repeat scroll;
+        background-position: 50% 50%;
     }
 
     a {
         margin: 32px 0;
-        font-size: 1.3rem;
-        color: var(--accent5);
+        font-size: 1.4em;
+        color: var(--accent6);
 
         &:hover {
-            color: var(--accent4);
+            color: var(--accent5);
+        }
+    }
+
+    .random-fact {
+        margin: 32px 0;
+        padding: 6px;
+        min-height: 300px;
+    }
+
+    .type {
+        user-select: none;
+        font-family: var(--inconsolata), var(--montserrat), monospace;
+        font-size: 1.25em;
+        color: #0000;
+        background:
+            linear-gradient(-90deg, var(--accent5) 5px, #0000 0) 10px 0,
+            linear-gradient(var(--text-color-high) 0 0) 0 0;
+        background-size: calc(var(--n)*1ch) 200%;
+        -webkit-background-clip: padding-box, text;
+        background-clip: padding-box, text;
+        background-repeat: no-repeat;
+        animation:
+            b .9s infinite steps(1),
+            t calc(var(--n)*70ms) steps(var(--n)) forwards;
+    }
+
+    @keyframes t {
+        from {
+            background-size: 0 200%
+        }
+    }
+
+    @keyframes b {
+        50% {
+            background-position: 0 -100%, 0 0
         }
     }
 }

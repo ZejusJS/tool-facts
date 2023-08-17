@@ -1,55 +1,47 @@
+import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { NextPageContext } from 'next/types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-let imgs = [
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806239/random/tool1_dhcsbl.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806239/random/tool5_tssrwj.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806239/random/tool7_raz6eg.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806239/random/tool6_bqo5gi.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806240/random/tool2_yf6zal.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806241/random/tool3_liylvp.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806250/random/tool4_v7hdyp.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806603/random/tool9_nh3rmy.webp",
-    "https://i.imgur.com/emdfek5.png",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806188/random/tool0.webp",
-    "https://res.cloudinary.com/djlseprqx/image/upload/v1688806238/random/tool8_bqvj8y.webp",
-    "https://i.imgur.com/R6a6ape.jpg",
-]
+const MAX_FACTS = 6
+const MAX_FACTS_LENGTH = 200
 
 function Error({ statusCode }: { statusCode: number }) {
-    const { t } = useTranslation('error')
-    const [randomNum, setRandomNum] = useState(-1);
+    const { t, lang } = useTranslation('error')
+    const [facts, setFacts] = useState<any>(null);
+    const [rand, setRand] = useState(-1)
 
-    function Image() {
-        if (randomNum < 0) setRandomNum(Math.floor(Math.random() * (imgs.length - 1)))
-        return (
-            <img src={imgs[randomNum]} alt="Tool Image" />
-        )
-    }
+    useEffect(() => {
+        setRand(Math.floor(Math.random() * 6))
+
+        axios({
+            url: `/api/random-facts/${MAX_FACTS}/${MAX_FACTS_LENGTH}`
+        })
+            .then((data) => setFacts(data.data.facts))
+            .catch((e) => console.error(e))
+    }, [])
+
+    let style = facts ? {
+        "--n": facts[rand][lang?.slice(4)].length + t('know').length
+    } as React.CSSProperties : {}
 
     return (
         <main className='error'>
-            {
-                statusCode === 404 ?
-                    <section className='error-page not-found'>
-                        <h3>{t('not-found')}</h3>
-                        <Image />
-                        <Link className='back' href='/' shallow={false} prefetch={false}>
-                            {t('home')}
-                        </Link>
-                    </section>
-                    :
-                    <section className='error-page'>
-                        <h3>{t('wrong')}</h3>
-                        <Image />
-                        <h4>Code: <span>{statusCode}</span></h4>
-                        <Link className='back' href='/' shallow={false} prefetch={false}>
-                            {t('home')}
-                        </Link>
-                    </section>
-            }
+            <section className='error-page not-found'>
+                <h3>{t('wrong')}</h3>
+                <h4>Code: <span>{statusCode}</span></h4>
+                <Link className='back' href='/' shallow={false} prefetch={false}>
+                    {t('home')}
+                </Link>
+                <p className="random-fact">
+                    {facts ?
+                        <span className="type" style={style}>
+                            {t('know')} {facts ? facts[rand][lang?.slice(4)] : ""}
+                        </span>
+                        : ''}
+                </p>
+            </section>
         </main>
     )
 }

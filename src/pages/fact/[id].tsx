@@ -1,8 +1,7 @@
-
 import useTranslation from "next-translate/useTranslation"
 import { GetServerSideProps } from "next/types";
-import { useRouter } from "next/router";
 import dbConnect from '../../utils/connectMongo';
+import findFactId from "@/utils/findFact-id";
 import Fact from '../../utils/models/fact';
 import { locales } from '../../../i18n'
 import { useEffect, useState } from "react";
@@ -18,23 +17,20 @@ interface props {
 const FactShare = ({ factJson }: props) => {
     const { t, lang } = useTranslation('common')
     const { t: tS } = useTranslation('share-fact')
-    const router = useRouter();
 
     const [fact, setFact] = useState(JSON.parse(factJson))
     const [alert, setAlert] = useState(false)
 
-    const { id } = router.query
-
     useEffect(() => {
-        console.log(fact)
-        if (!fact[lang]?.length) {
+        // console.log(fact)
+        if (!fact[lang?.slice(4)]?.length) {
             setAlert(true)
         }
     }, [])
 
     function findLocale(): string {
         let found = locales.find(locale => {
-            return fact[locale]?.length
+            return fact[locale?.slice(4)]?.length
         })
         return String(found)
     }
@@ -58,8 +54,8 @@ const FactShare = ({ factJson }: props) => {
                 <div className="logo-con"></div>
                 <div className={`fact-div ${alert ? "background" : ''}`}>
                     <h2>{t('did-you-know')}</h2>
-                    {fact[lang]?.length ?
-                        <p className="fact">{fact[lang]}</p>
+                    {fact[lang?.slice(4)]?.length ?
+                        <p className="fact">{fact[lang?.slice(4)]}</p>
                         :
                         <p className="fact">{fact[findLocale()]}</p>
                     }
@@ -89,19 +85,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res, query, 
     )
 
     try {
-        await dbConnect()
-
-        // console.log(locale)
-        // console.log(id)
-
-        const fact = await Fact.findOne({
-            // [String(locale)]: { $exists: true },
-            show: true,
-            id,
-            // $expr: {
-            //     $gt: [{ $strLenCP: `$${locale}` }, 0]
-            // }
-        }).select([`cs`, 'en', 'id', '-_id'])
+        let fact = await findFactId(id);
 
         if (!fact) {
             return {

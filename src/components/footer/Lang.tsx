@@ -47,7 +47,7 @@ const lang = () => {
                                 {/* {tNav(`language-name-${lng}`)} */}
 
                                 {
-                                    lng === 'cs' ? "Čeština (cs)" : "English (en)"
+                                    lng === 'lng-cs' ? "Čeština (cs)" : "English (en)"
                                 }
                             </Link>
                             {

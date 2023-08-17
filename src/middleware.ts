@@ -18,12 +18,12 @@ export function middleware(req: NextRequest) {
     const langReg = new RegExp(`((^${String(process.env.NEXT_PUBLIC_FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${lang})(\/)*?)`, 'g')
 
     if (locale && req.url.match(langReg) && locale !== lang) {
-      console.log('redirect')
+      // console.log('redirect')
       req.nextUrl.href = req.url.replace(langReg, process.env.NEXT_PUBLIC_FRONTEND + '/' + locale)
       redirect = true
     }
     if (req.url.match(langReg)) {
-      console.log('find')
+      // console.log('find')
       findLocale = true
     }
   })

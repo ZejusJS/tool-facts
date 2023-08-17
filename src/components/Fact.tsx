@@ -30,8 +30,8 @@ const Fact = () => {
         })
             .then(data => {
                 data.data.facts = data.data.facts.map((f: any) => {
-                    f['fact'] = f[lang]
-                    delete f[lang]
+                    f['fact'] = f[lang?.slice(4)]
+                    delete f[lang?.slice(4)]
                     return f
                 })
                 setTimeout(() => {

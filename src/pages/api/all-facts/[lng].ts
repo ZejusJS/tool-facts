@@ -16,7 +16,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { query: { lng } } = req
-  let lang = String(lng)
+  let lang = String(lng?.slice(4))
 
   switch (req.method) {
     case 'GET':
@@ -30,10 +30,11 @@ export default async function handler(
         }).select([`${lang}`, 'id', '-_id'])
 
         res.setHeader('Cache-Control', "max-age=17000, s-max-age=170000")
+
         res.status(200).json({ facts })
 
       } catch (e) {
-        console.error(e);
+        console.error("##error!!!!:", e);
         res.status(500).json({ success: false })
       }
       break
