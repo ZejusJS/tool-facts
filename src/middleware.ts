@@ -14,9 +14,11 @@ export function middleware(req: NextRequest) {
   
   let redirect = false
   let findLocale = false
+  let findOneCookieMatch = false
   locales.map((lang) => {
     const langReg = new RegExp(`((^${String(process.env.NEXT_PUBLIC_FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${lang})(\/)*?)`, 'g')
 
+    if (lang === locale) findOneCookieMatch = true
     if (locale && req.url.match(langReg) && locale !== lang) {
       // console.log('redirect')
       req.nextUrl.href = req.url.replace(langReg, process.env.NEXT_PUBLIC_FRONTEND + '/' + locale)
@@ -28,6 +30,12 @@ export function middleware(req: NextRequest) {
     }
   })
   
+  
+  if (!findOneCookieMatch) {
+    const response = NextResponse.redirect(req.url)
+    response.cookies.delete('NEXT_LOCALE')
+    return response
+  }
   if (redirect) return NextResponse.redirect(req.nextUrl)
   else if (!findLocale && locale && locale !== process.env.NEXT_PUBLIC_DEFAULT_LOCALE) {
     req.nextUrl.pathname = req.nextUrl.pathname.replace(/\//, '/' + locale + '/')

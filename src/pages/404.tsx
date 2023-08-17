@@ -2,7 +2,6 @@ import axios from 'axios';
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import ExitSvg from '@/svg/Exit';
 
 const MAX_FACTS = 6
 const MAX_FACTS_LENGTH = 200

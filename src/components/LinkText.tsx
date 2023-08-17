@@ -16,7 +16,7 @@ const LinkText = ({ lang, children }: props) => {
     function url(lng: string): string {
         let href = router.asPath
 
-        if (router.basePath.startsWith(lang)) {
+        if (router?.basePath?.startsWith(lang)) {
             href = router.basePath.replace(lang, lng)
         } else {
             href = lng + href
