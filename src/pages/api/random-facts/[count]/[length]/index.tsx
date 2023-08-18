@@ -48,7 +48,7 @@ export default async function handler(
                     return res.status(404).json({ success: false })
                 }
 
-                res.setHeader('Cache-Control', "s-max-age=10000")
+                res.setHeader('Cache-Control', "public, s-max-age=10000")
 
                 return res.status(200).json({ facts, success: true })
             } catch (e) {
