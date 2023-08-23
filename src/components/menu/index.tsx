@@ -33,6 +33,14 @@ const index = () => {
                         </Link>
                     </div>
                     <div className='menu-block link'>
+                        <Link href='/find-fact'>
+                            <span className='link-text'>{t('links.find-fact')}</span>
+                            <span className='link-tip'>
+                                {t('links.find-fact-tip')}
+                            </span>
+                        </Link>
+                    </div>
+                    <div className='menu-block link'>
                         <Link href='/sources'>
                             <span className='link-text'>{t('links.sources')}</span>
                             <span className='link-tip'>

@@ -3,7 +3,9 @@
         "home": "Homepage",
         "home-tip": "Main page with facts generator",
         "sources": "Sources of facts",
-        "sources-tip": "Links to the sources of most facts"
+        "sources-tip": "Links to the sources of most facts",
+        "find-fact": "Search facts",
+        "find-fact-tip": "Can't find your favorite fact? Try to search for him"
     },
     "more": "More coming soon..."
 }
