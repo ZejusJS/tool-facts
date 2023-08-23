@@ -44,7 +44,7 @@ const LinkText = ({ lang, children }: props) => {
             prefetch={false}
         >
             {
-                lang === 'cs' ?
+                lang === 'lng-cs' ?
                     <FlagCS /> : <FlagEN />
             }
             {children}
