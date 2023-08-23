@@ -3,6 +3,8 @@ import useTranslation from 'next-translate/useTranslation'
 import { ChangeEvent, FormEventHandler, useState } from 'react'
 import { FormEvent } from "react";
 
+import FindFactCom from '@/components/FindFact';
+
 import EyeSvg from '@/svg/Eye'
 
 const FindFact = () => {
@@ -51,7 +53,15 @@ const FindFact = () => {
                 </form>
             </section>
             <section className='facts-sec'>
-
+                {
+                    facts?.map(function (fact: any) {
+                        return (
+                            <>
+                                <FindFactCom text={fact?.cs || fact?.en} id={fact?.id} />
+                            </>
+                        )
+                    })
+                }
             </section>
         </main>
     )

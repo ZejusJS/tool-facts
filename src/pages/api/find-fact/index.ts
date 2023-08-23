@@ -5,7 +5,7 @@ import Fact from '../../../utils/models/fact';
 
 type Data = {
     success?: boolean
-    fact?: object
+    facts?: object
     msg?: string
 }
 
@@ -32,14 +32,14 @@ export default async function handler(
                     return '"' + q + '"'
                 }).toString()
 
-                const fact = await Fact.find({
+                const facts = await Fact.find({
                     $text: { $search: querySplit },
                     show: true
                 }).select(["-_id", "id", lng])
 
                 // res.setHeader('Cache-Control', "max-age=300, s-maxage=5000")
 
-                return res.status(200).json({ fact, success: true })
+                return res.status(200).json({ facts, success: true })
             } catch (e) {
                 console.error(e);
                 return res.status(500).json({ success: false })
