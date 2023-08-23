@@ -101,9 +101,55 @@
                 font-size: 1em;
             }
 
-            h3 {
-                font-size: 1.3em;
-                margin: 0;
+            .header {
+                display: flex;
+                align-items: center;
+                
+                h3 {
+                    font-size: 1.3em;
+                    margin: 0;
+                    display: inline-block;
+                }
+
+                .share-con {
+                    position: relative;
+
+                    .share {
+                        background-color: transparent;
+                        border: 0;
+                        padding: 0;
+                        height: 2em;
+    
+                        svg {
+                            height: 100%;
+                            width: auto;
+                            fill: rgb(201, 201, 201);
+                            stroke: rgb(201, 201, 201);
+                        }
+                    }
+
+                    .copy-text {
+                        position: absolute;
+                        top: 10%;
+                        text-align: center;
+                        left: -80%;
+                        transform: translate(-50%);
+                        width: 100px;
+                        background-color: var(--accent1);
+                        border-radius: 8px;
+                        padding: 3px;
+                        opacity: 1;
+                        user-select: none;
+                        pointer-events: none;
+                        opacity: 0;
+                        transition: opacity 150ms, left 200ms;
+
+                        &.copy {
+                            opacity: 1;
+                            left: -150%;
+                        }
+                    }
+                }
             }
         }
     }

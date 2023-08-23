@@ -1,6 +1,5 @@
 import axios from "axios"
 import useTranslation from "next-translate/useTranslation"
-import Link from "next/link"
 import { RefObject, useEffect, useRef, useState } from "react"
 import Share from '../svg/Share'
 
