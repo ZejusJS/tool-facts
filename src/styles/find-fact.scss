@@ -134,7 +134,8 @@
                         text-align: center;
                         left: -80%;
                         transform: translate(-50%);
-                        width: 100px;
+                        width: 130px;
+                        width: max-content;
                         background-color: var(--accent1);
                         border-radius: 8px;
                         padding: 3px;

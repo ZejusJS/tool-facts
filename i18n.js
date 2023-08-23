@@ -4,7 +4,8 @@ module.exports = {
     pages: {
         '*': ['common', 'nav', 'form', 'about', 'error', "meta", 'menu'],
         "/fact/[id]": ['share-fact'],
-        "/sources": ['sources']
+        "/sources": ['sources'],
+        "/find-fact": ['find']
     },
     loadLocaleFrom: (lang, ns) =>
         // You can use a dynamic import, fetch, whatever. You should

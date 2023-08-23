@@ -51,13 +51,15 @@ const FindFact = () => {
                         <input
                             id='find-query'
                             type="text"
-                            placeholder="Find fact"
+                            placeholder={t("placeholder-find")}
                             onChange={changeQuery}
                             value={findQuery}
                         />
                         <button
                             type='submit'
                             className='query-submit'
+                            role='search'
+                            title={t('search')}
                         >
                             <EyeSvg />
                         </button>

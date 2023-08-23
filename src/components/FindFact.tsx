@@ -11,6 +11,7 @@ interface IFact {
 
 const FindFact = ({ text, id }: IFact) => {
     const { t, lang } = useTranslation('common')
+    const { t: tF } = useTranslation('find')
 
     const [isUrlCopied, setIsUrlCopied] = useState(false)
 
@@ -39,7 +40,7 @@ const FindFact = ({ text, id }: IFact) => {
                         <Share />
                     </button>
                     <span className={`copy-text ${isUrlCopied ? 'copy' : ''}`}>
-                        Fact copied
+                        {tF('url-copied')}
                     </span>
                 </div>
             </div>
