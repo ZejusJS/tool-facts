@@ -38,7 +38,7 @@ export default async function handler(
                     show: true
                 }).select(["-_id", "id", lng])
 
-                // res.setHeader('Cache-Control', "max-age=300, s-maxage=10000")
+                res.setHeader('Cache-Control', "max-age=600, s-maxage=10000")
 
                 return res.status(200).json({ facts, success: true })
             } catch (e) {
