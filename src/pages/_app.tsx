@@ -18,6 +18,7 @@ import '../styles/error.scss'
 import '../styles/fact-share.scss'
 import '../styles/sources.scss'
 import '../styles/menu.scss'
+import '../styles/find-fact.scss'
 
 import { Inconsolata, Quicksand, Montserrat, Roboto } from 'next/font/google';
 import localFont from 'next/font/local';

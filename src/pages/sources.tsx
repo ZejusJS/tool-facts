@@ -11,6 +11,7 @@ const sources = () => {
         "https://guitar.com/features/artist-rigs/7-facts-about-tool",
         "https://www.loudersound.com/features/10-things-we-learned-from-maynard-james-keenans-biography",
         "https://www.samwoolfe.com/2013/03/interesting-facts-about-tools-music.html",
+        "http://toolshed.down.net/news/aprilfools97.html",
     ]
 
     return (
