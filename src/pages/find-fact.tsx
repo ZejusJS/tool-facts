@@ -11,17 +11,29 @@ const FindFact = () => {
     const { t, lang } = useTranslation('find')
     const [findQuery, setFindQuery] = useState('')
     const [facts, setFacts] = useState([])
+    const [loading, setLoading] = useState(false)
 
     function findFact(e: FormEvent) {
+        setLoading(true)
         e.preventDefault()
+
+        const querySplit = findQuery.split(' ').map(q => {
+            return '"' + q + '"'
+        }).toString()
 
         axios({
             url: "/api/find-fact",
             params: {
-                query: findQuery,
-                lng: lang.slice(4)
+                query: querySplit,
+                lng: lang.slice(4),
+                formatted: true
             },
-            method: "get"
+            method: "get",
+            onDownloadProgress(progressEvent) {
+                setTimeout(() => {
+                    setLoading(false)
+                }, 100);
+            },
         })
             .then(data => setFacts(data.data.facts))
             .catch(e => console.error(e))
@@ -54,13 +66,24 @@ const FindFact = () => {
             </section>
             <section className='facts-sec'>
                 {
-                    facts?.map(function (fact: any) {
-                        return (
-                            <>
-                                <FindFactCom text={fact?.cs || fact?.en} id={fact?.id} />
-                            </>
-                        )
-                    })
+                    <div className={`facts-con ${loading ? 'loading' : ''}`}>
+                        <div className='loader'>
+                            <img
+                                className="eye-spinner"
+                                src="https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif" alt="loading content"
+                            />
+                        </div>
+                        {facts?.length ?
+                            <section className='facts-list'>
+                                {facts?.map(function (fact: any) {
+                                    return (
+                                        <>
+                                            <FindFactCom text={fact?.cs || fact?.en} id={fact?.id} />
+                                        </>
+                                    )
+                                })}
+                            </section> : ''}
+                    </div>
                 }
             </section>
         </main>

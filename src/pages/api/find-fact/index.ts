@@ -13,13 +13,10 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    let { query: { query, lng } } = req
+    let { query: { query, lng, formatted } } = req
 
     lng = String(lng)
     query = String(query).replace(/\s+/g, ' ').trim()
-
-    console.log(query)
-    console.log(lng)
 
     if (!lng || !query || lng !== "en" && lng !== "cs") return res.status(400).json({ success: false })
 
@@ -28,12 +25,16 @@ export default async function handler(
             try {
                 await dbConnect()
 
-                const querySplit = query.split(' ').map(q => {
-                    return '"' + q + '"'
-                }).toString()
+                let querySplit = query
+
+                if (formatted !== 'true') {
+                    querySplit = query.split(' ').map(q => {
+                        return '"' + q + '"'
+                    }).toString()
+                }
 
                 const facts = await Fact.find({
-                    $text: { $search: querySplit },
+                    $text: { $search: querySplit, $language: 'none' },
                     show: true
                 }).select(["-_id", "id", lng])
 
