@@ -51,6 +51,10 @@ factSchema.pre('findOneAndUpdate', function (next) {
     next();
 });
 
+factSchema.index({ id: 'text', cs: 'text', en: 'text' });
+
 const Fact = models.Fact || model('Fact', factSchema);
+
+Fact.createIndexes()
 
 export default Fact;
