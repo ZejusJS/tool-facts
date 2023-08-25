@@ -13,6 +13,7 @@
         "open": "Open settings",
         "title": "Settings",
         "fact-length": "Max length of facts",
-        "total": "The number of facts matching this setting:"
+        "total": "The number of facts matching this setting:",
+        "close": "Close settings"
     }
 }
