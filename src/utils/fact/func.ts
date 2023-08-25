@@ -25,8 +25,5 @@ export function getLongestFactForRange(facts: IFact[]): number {
 
     facts.map(fact => fact?.fact?.length > longest?.fact?.length ? longest = fact : '')
 
-    console.log(longest.fact.length)
-    console.log(longest.fact.length % 30)
-    console.log(longest.fact.length - (longest.fact.length % 30) + 30)
     return longest.fact.length - (longest.fact.length % 30) + 30
 }
