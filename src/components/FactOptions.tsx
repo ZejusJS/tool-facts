@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation'
-import { getLongestFactForRange } from "@/utils/fact/func"
+import { getLongestFactForRange, funcShuffleFacts } from "@/utils/fact/func"
 import SvgClose from '@/svg/SvgClose'
 
 const FactOptions = ({
@@ -35,7 +35,7 @@ const FactOptions = ({
                     {t('settings.total')}
                     &nbsp;
                     <span>
-                        {facts.length}
+                        {funcShuffleFacts(fetchedFacts, maxFactLengthStorage).length}
                     </span>
                 </p>
                 <div className="block">
