@@ -13,3 +13,8 @@ namespace NodeJS {
         NEXT_PUBLIC_DEFAULT_LOCALE: string;
     }
 }
+
+interface IFact {
+    id: string
+    fact: string
+}

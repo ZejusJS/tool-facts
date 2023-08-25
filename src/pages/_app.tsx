@@ -6,6 +6,9 @@ import Nav from "@/components/nav"
 import Footer from '@/components/footer'
 import Menu from '@/components/menu'
 
+import '../styles/_variables.scss'
+import '../styles/_reset.scss'
+import '../styles/_range-slider.scss'
 import '../styles/global.scss'
 import '../styles/fact.scss'
 import '../styles/new-fact.scss'

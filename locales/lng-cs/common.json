@@ -3,9 +3,16 @@
     "next-fact": "NAČÍST DALŠÍ FAKT",
     "did-you-know": "A VĚDĚLI JSTE, ŽE...",
     "url-copy": "URL faktu zkopírována do schránky",
+    "prev-fact": "Předchozí fakt",
     "new-facts": {
         "q": "Máš nějaká nová fakta?",
         "a": "Poděl se s námi!"
     },
-    "total": "Tato stránka sčítá úžasných <2>{{cs}}</2> faktů v <0>češtině</0> a <2>{{en}}</2> v <1>angličtině</1>!"
+    "total": "Tato stránka sčítá úžasných <2>{{cs}}</2> faktů v <0>češtině</0> a <2>{{en}}</2> v <1>angličtině</1>!",
+    "settings": {
+        "open": "Otevřít nastavení",
+        "title": "Nastavení",
+        "fact-length": "Maximální délka faktů",
+        "total": "Počet faktů odpovídající tomuto nastavení:"
+    }
 }

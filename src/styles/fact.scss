@@ -25,7 +25,7 @@
         justify-content: space-between;
         width: 100%;
         max-width: 800px;
-        background-color: rgb(34, 34, 34);
+        background-color: var(--dark-accent-3);
         border-radius: 12px;
         overflow: hidden;
         height: clamp(420px, 90vh, 600px);
@@ -79,11 +79,11 @@
                     user-select: none;
                     pointer-events: none;
                     max-width: 200px;
-                    color: rgb(235, 235, 235);
+                    color: var(--text-color-high);
                     word-wrap: break-word;
 
-                    background-color: rgb(54, 54, 54);
-                    border: 2px solid rgb(70, 70, 70);
+                    background-color: var(--dark-accent-4);
+                    border: 2px solid var(--dark-accent-border-1);
                     border-radius: 11px;
                     padding: 1px 7px 1px 2px;
                 }
@@ -103,18 +103,18 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-    
+
                     &:hover,
                     &:active {
                         svg {
                             opacity: 1;
                         }
                     }
-    
+
                     svg {
                         width: 60px;
                         height: auto;
-                        stroke: white;
+                        stroke: var(--text-color-high);
                         opacity: 0.5;
                     }
                 }
@@ -138,44 +138,194 @@
             }
         }
 
-        p {
-            font-family: var(--inconsolata), var(--montserrat), monospace;
-            font-size: clamp(14px, 1.25rem, 26px);
-            // background-color: black;
-            // background-image: url('https://i.imgur.com/s1Jzbcb.jpg');
-            // background-position: 0px 0%;
-            // background-repeat: no-repeat;
-            // background-attachment: fixed;
-            // background-size: contain;
+        .fact-text-wrapper {
+            position: relative;
             margin: 0;
-            padding: 5px;
             height: 100%;
             overflow: auto;
-            word-wrap: break-word;
-            white-space: pre-line;
+            padding-bottom: 30px;
 
-            opacity: 1;
-            transition: opacity 200ms;
+            .options-wrap {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--dark-accent-2);
+                width: 90%;
+                height: 80%;
+                overflow: auto;
+                z-index: 1;
+                border: 1px solid var(--dark-accent-border-1);
+                border-radius: 12px;
+                padding: 10px;
 
-            &.hidden {
+                user-select: none;
+                pointer-events: none;
                 opacity: 0;
+                transition: opacity 200ms;
+
+                &.focused {
+                    user-select: unset;
+                    pointer-events: unset;
+                    opacity: 1;
+                }
+
+                .options {
+                    h6 {
+                        text-align: center;
+                        font-size: 1.8em;
+                        margin: 0;
+                    }
+
+                    .total-match {
+                        color: var(--text-color-mid);
+                        text-align: center;
+                        margin: 0;
+                        margin-bottom: 20px;
+                        font-size: 1em;
+
+                        span {
+                            color: var(--text-color-high);
+                        }
+                    }
+                    
+                    .block {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 5px;
+                        overflow: visible;
+
+                        label {
+                            font-size: 1.3em;
+                        }
+
+                        input[type="number"],
+                        input[type="text"] {
+                            font-size: 1.3em;
+                            padding: 3px 7px;
+                            text-align: center;
+                            width: max-content;
+                            border-radius: 12px;
+                        }
+
+                        input[type="range"] {
+                            width: 80%;
+
+                            @media (max-width: 500px) {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 500px) {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0;
+                    border: 0;
+                }
+            }
+
+            .fact-text {
+                font-family: var(--inconsolata), var(--montserrat), monospace;
+                font-size: clamp(14px, 1.25rem, 26px);
+                // background-color: black;
+                // background-image: url('https://i.imgur.com/s1Jzbcb.jpg');
+                // background-position: 0px 0%;
+                // background-repeat: no-repeat;
+                // background-attachment: fixed;
+                // background-size: contain;
+                margin: 0;
+                padding: 5px;
+                word-wrap: break-word;
+                white-space: pre-line;
+
+                opacity: 1;
+                transition: opacity 200ms;
+
+                &.unfocused {
+                    user-select: none;
+                    pointer-events: none;
+                    opacity: 0.5;
+                }
+
+                &.hidden {
+                    opacity: 0;
+                }
             }
         }
 
-        .next-fact {
-            font-family: var(--inconsolata), var(--roboto), sans-serif;
-            font-display: block;
-            font-size: 2.1em;
-            padding: 5px;
-            color: white;
-            width: 100%;
-            flex-shrink: 0;
-            border-radius: 0;
-            min-height: 3.2rem;
 
-            @media (max-width: 500px) {
-                font-size: 1.5rem;
-                min-height: 2.6rem;
+        .buttons-con {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            min-height: 3.2rem;
+            height: max-content;
+            background-color: var(--accent1);
+            align-items: center;
+            justify-content: center;
+            word-break: break-word;
+
+            .btn-fact {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                border-radius: 0;
+                padding: 1px;
+
+                &:hover {
+                    background-color: var(--accent2);
+                }
+            }
+
+            .previous-fact {
+                background-color: transparent;
+                width: 4rem;
+
+                svg {
+                    height: auto;
+                    width: 100%;
+                    max-height: 85%;
+                    fill: var(--text-color-high);
+                }
+
+                @media (max-width: 300px) {
+                    width: 2.5rem;
+                }
+            }
+
+            .next-fact {
+                font-family: var(--inconsolata), var(--roboto), sans-serif;
+                font-display: block;
+                font-size: 2.1em;
+                padding: 5px;
+                color: var(--text-color-high);
+                border-radius: 0;
+                background-color: transparent;
+                width: 100%;
+
+                @media (max-width: 500px) {
+                    font-size: 1.5rem;
+                    min-height: 2.6rem;
+                }
+            }
+
+            .options {
+                width: 4rem;
+                background-color: transparent;
+
+                svg {
+                    width: 100%;
+                    height: auto;
+                    max-height: 100%;
+                }
+
+                @media (max-width: 300px) {
+                    width: 2.5rem;
+                }
             }
         }
     }
@@ -192,7 +342,7 @@
 }
 
 .total-facts {
-    color: rgb(199, 199, 199);
+    color: var(--text-color-mid);
     font-size: clamp(14px, 1.1rem, 25px);
     text-align: center;
 
@@ -202,7 +352,7 @@
     }
 
     .count {
-        color: white;
+        color: var(--text-color-high);
         font-weight: 500;
 
         &.blur {
