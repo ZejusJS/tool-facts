@@ -1,26 +1,3 @@
-// @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Quicksand:wght@400;500;600;700&family=PT+Mono&display=optional');
-
-
-:root {
-    --accent1: #960a0d;
-    --accent2: #a50c0e;
-    --accent3: #860f11;
-    --accent4: #a80016;
-    --accent5: #d80000;
-    --accent6: #f72222;
-    --dark-accent-1: rgb(15, 15, 15);
-    --dark-accent-2: rgb(20, 20, 20);
-    --dark-accent-border-1: rgb(66, 66, 66);
-    --dark-accent-border-2: rgb(82, 82, 82);
-    --text-color-high: #ffffff;
-    --text-color-mid: rgb(187, 187, 187);
-    --text-color-low: rgb(138, 138, 138);
-
-    --scroll-width: 6px;
-}
-
 /* Firefox */
 * {
     box-sizing: border-box;
@@ -52,17 +29,17 @@ body {
     padding: 0;
     margin: 0;
     background-color: var(--dark-accent-1);
-    color: white;
+    color: var(--text-color-high);
     min-height: 100vh;
     font-family: var(--roboto), sans-serif;
 }
 
 input,
 textarea {
-    background-color: rgb(37, 37, 37);
-    color: white;
+    background-color: var(--dark-accent-3);
+    color: var(--text-color-high);
     border: 0;
-    border: 3px solid rgb(65, 65, 65);
+    border: 3px solid var(--dark-accent-border-1);
 }
 
 button {
@@ -71,7 +48,7 @@ button {
     border-radius: 8px;
     user-select: none;
     background-color: var(--accent1);
-    color: white;
+    color: var(--text-color-high);
 
     &:hover {
         cursor: pointer;

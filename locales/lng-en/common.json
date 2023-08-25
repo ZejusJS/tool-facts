@@ -3,9 +3,16 @@
     "next-fact": "LOAD NEXT FACT",
     "did-you-know": "AND DID YOU KNOW THAT...",
     "url-copy": "URL of the fact copied to clipboard",
+    "prev-fact": "Previous fact",
     "new-facts": {
         "q": "Do you have any new facts?",
         "a": "Share it with us!"
     },
-    "total": "This site lists <2>{{cs}}</2> amazing facts in <0>czech</0> and <2>{{en}}</2> in <1>english</1>!"
+    "total": "This site lists <2>{{cs}}</2> amazing facts in <0>czech</0> and <2>{{en}}</2> in <1>english</1>!",
+    "settings": {
+        "open": "Open settings",
+        "title": "Settings",
+        "fact-length": "Max length of facts",
+        "total": "The number of facts matching this setting:"
+    }
 }

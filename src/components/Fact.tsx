@@ -1,14 +1,25 @@
 import axios from "axios"
 import useTranslation from "next-translate/useTranslation"
-import { RefObject, useEffect, useRef, useState } from "react"
+import { ChangeEvent, RefObject, useEffect, useRef, useState } from "react"
 import Share from '../svg/Share'
+import { funcShuffleFacts } from "@/utils/fact/func"
+import BackSvg from "@/svg/Back"
+import SvgWrenchNut from '@/svg/WrenchNutSvg'
+import useLocalStorage from "use-local-storage";
+import FactOptions from "./FactOptions"
+
+const minFactLength = 60
+const maxFactLength = 2800
 
 const Fact = () => {
     const { t, lang } = useTranslation('common')
 
     const [fact, setFact] = useState({ fact: '', id: '' })
-    const [facts, setFacts] = useState([])
+    const [facts, setFacts] = useState<IFact[]>([])
+    const [fetchedFacts, setFetchedFacts] = useState<IFact[]>([])
     const [loadingFact, setLoadingFact] = useState(true)
+    const [isSettingsOpened, setIsSettingsOpened] = useState(false)
+    const [maxFactLengthStorage, setMaxFactLengthStorage] = useLocalStorage<string>("max-fact-length", `${maxFactLength}`);
 
     const eyeRef: RefObject<HTMLImageElement> = useRef(null)
 
@@ -34,48 +45,61 @@ const Fact = () => {
                     return f
                 })
                 setTimeout(() => {
-                    shuffleFacts(data.data.facts)
+                    let shuffledFacts = funcShuffleFacts(data.data.facts, Number(maxFactLengthStorage))
+                    setFacts(shuffledFacts)
+                    setFetchedFacts(data.data.facts)
+                    setFact(shuffledFacts[0])
+                    factsCount.current = 1
                 }, 200);
             })
             .catch(e => console.error(e))
     }, [lang])
 
-    useEffect(() => {
-        if (facts?.length) {
-            setFact(facts[0])
-            factsCount.current = 1
-        }
-    }, [facts])
-
     function nextFact() {
         if (facts.length) {
             setFact(facts[factsCount.current])
+            console.log(facts)
 
             factsCount.current = factsCount.current + 1
 
             if (factsCount.current >= facts.length) {
                 shuffleFacts()
-                factsCount.current = 0
             }
         }
     }
 
-    function shuffleFacts(data?: any) {
-        setFacts(prev => {
-            let array = data ? data : prev
-            let i = array.length
-            let j, temp
+    function prevFact() {
+        if (facts.length && factsCount.current > 1) {
+            setFact(facts[factsCount.current - 2])
 
-            while (--i > 0) {
-                j = Math.floor(Math.random() * (i + 1))
-                temp = array[j]
-                array[j] = array[i]
-                array[i] = temp
-            }
+            factsCount.current = factsCount.current - 1
+        }
+    }
 
-            return array
+    function shuffleFacts() {
+        setFacts(function (prev: IFact[]): IFact[] {
+            return [...prev, ...funcShuffleFacts(fetchedFacts, Number(maxFactLengthStorage))]
         })
     }
+
+    function changeFactLength(e: ChangeEvent<HTMLInputElement>) {
+        let value = Math.max(minFactLength, Math.min(maxFactLength, Number(e.target.value)));
+        setMaxFactLengthStorage(String(value))
+    }
+
+    function changeFactLength2(e: ChangeEvent<HTMLInputElement>) {
+        setMaxFactLengthStorage(e.target.value)
+    }
+
+    useEffect(() => {
+        let value = Math.max(minFactLength, Math.min(maxFactLength, Number(maxFactLengthStorage)));
+
+        let newFacts = funcShuffleFacts(fetchedFacts, value)
+        setFacts(newFacts)
+        setFact(newFacts[0])
+        factsCount.current = 1
+    }, [maxFactLengthStorage])
+
 
     const [isUrlCopied, setIsUrlCopied] = useState(false)
 
@@ -91,18 +115,33 @@ const Fact = () => {
     }
 
     return (
-        <div className='fact'>
+        <div className='fact' onClick={() => setIsSettingsOpened(false)}>
             <div className='fact-wrapper'>
                 <h3 className='did-you-know'>
                     {t('did-you-know')}
                 </h3>
-
-                <p className={loadingFact ? 'hidden' : ''}>
-                    {fact.fact}
-                </p>
+                <div className="fact-text-wrapper">
+                    <FactOptions
+                        isSettingsOpened={isSettingsOpened}
+                        maxFactLengthStorage={maxFactLengthStorage}
+                        changeFactLength2={changeFactLength2}
+                        changeFactLength={changeFactLength}
+                        max={maxFactLength} 
+                        min={minFactLength}
+                        fetchedFacts={fetchedFacts}
+                        facts={facts}
+                    />
+                    <p
+                        className={`fact-text ${isSettingsOpened ? 'unfocused' : ''} ${loadingFact ? 'hidden' : ''}`}
+                        aria-hidden={!loadingFact && isSettingsOpened}
+                    >
+                        {fact?.fact}
+                    </p>
+                </div>
                 <img
                     ref={eyeRef}
                     className={loadingFact ? '' : 'hidden'}
+                    aria-hidden={loadingFact}
                     src="https://media.tenor.com/KLg7XjZkDpsAAAAi/tool-eye.gif" alt=""
                 />
                 {
@@ -121,13 +160,31 @@ const Fact = () => {
                         : ''
                 }
             </div>
-            <button
-                type='button'
-                className='next-fact'
-                onClick={nextFact}
+            <div
+                className="buttons-con"
             >
-                {t('next-fact')}
-            </button>
+                <button
+                    className="previous-fact btn-fact"
+                    onClick={prevFact}
+                    title={t('prev-fact')}
+                >
+                    <BackSvg />
+                </button>
+                <button
+                    type='button'
+                    className='next-fact btn-fact'
+                    onClick={nextFact}
+                >
+                    {t('next-fact')}
+                </button>
+                <button
+                    className="options btn-fact"
+                    title={t('settings.open')}
+                    onClick={(e) => { e.stopPropagation(); setIsSettingsOpened(prev => !prev) }}
+                >
+                    <SvgWrenchNut />
+                </button>
+            </div>
         </div>
     )
 }
