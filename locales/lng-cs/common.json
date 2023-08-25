@@ -13,6 +13,7 @@
         "open": "Otevřít nastavení",
         "title": "Nastavení",
         "fact-length": "Maximální délka faktů",
-        "total": "Počet faktů odpovídající tomuto nastavení:"
+        "total": "Počet faktů odpovídající tomuto nastavení:",
+        "close": "Zavřít nastavení"
     }
 }

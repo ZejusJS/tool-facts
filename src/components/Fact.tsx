@@ -130,6 +130,7 @@ const Fact = () => {
                         min={minFactLength}
                         fetchedFacts={fetchedFacts}
                         facts={facts}
+                        setIsSettingsOpened={setIsSettingsOpened}
                     />
                     <p
                         className={`fact-text ${isSettingsOpened ? 'unfocused' : ''} ${loadingFact ? 'hidden' : ''}`}
@@ -166,6 +167,7 @@ const Fact = () => {
                 <button
                     className="previous-fact btn-fact"
                     onClick={prevFact}
+                    type='button'
                     title={t('prev-fact')}
                 >
                     <BackSvg />
@@ -180,6 +182,7 @@ const Fact = () => {
                 <button
                     className="options btn-fact"
                     title={t('settings.open')}
+                    type='button'
                     onClick={(e) => { e.stopPropagation(); setIsSettingsOpened(prev => !prev) }}
                 >
                     <SvgWrenchNut />

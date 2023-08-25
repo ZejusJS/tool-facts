@@ -164,6 +164,29 @@
                 opacity: 0;
                 transition: opacity 200ms;
 
+                .close {
+                    display: flex;
+                    padding: 0;
+                    background-color: transparent;
+                    position: absolute;
+                    right: 3px;
+                    top: 3px;
+
+                    svg {
+                        width: 3em;
+                        height: 3em;
+                        stroke: var(--accent2);
+                    }
+
+                    &:hover {
+                        svg {
+                            width: 3em;
+                            height: 3em;
+                            stroke: var(--accent5);
+                        }
+                    }
+                }
+
                 &.focused {
                     user-select: unset;
                     pointer-events: unset;
@@ -188,7 +211,7 @@
                             color: var(--text-color-high);
                         }
                     }
-                    
+
                     .block {
                         display: flex;
                         flex-direction: column;

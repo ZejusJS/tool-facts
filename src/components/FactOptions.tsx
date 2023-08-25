@@ -1,8 +1,10 @@
 import useTranslation from 'next-translate/useTranslation'
 import { getLongestFactForRange } from "@/utils/fact/func"
+import SvgClose from '@/svg/SvgClose'
 
 const FactOptions = ({
     isSettingsOpened,
+    setIsSettingsOpened,
     maxFactLengthStorage,
     changeFactLength2,
     changeFactLength,
@@ -19,6 +21,14 @@ const FactOptions = ({
             className={`options-wrap ${isSettingsOpened ? 'focused' : ''}`}
             aria-hidden={!isSettingsOpened}
         >
+            <button
+                title={t('settings.close')}
+                className='close'
+                type='button'
+                onClick={() => setIsSettingsOpened(false)}
+            >
+                <SvgClose />
+            </button>
             <div className="options">
                 <h6>{t('settings.title')}</h6>
                 <p className="total-match">
