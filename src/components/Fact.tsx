@@ -1,8 +1,8 @@
 import axios from "axios"
 import useTranslation from "next-translate/useTranslation"
-import { ChangeEvent, RefObject, useEffect, useRef, useState } from "react"
+import { ChangeEvent, Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from "react"
 import Share from '../svg/Share'
-import { funcShuffleFacts } from "@/utils/fact/func"
+import { funcShuffleFacts, getLengthLongestFact } from "@/utils/fact/func"
 import BackSvg from "@/svg/Back"
 import SvgWrenchNut from '@/svg/WrenchNutSvg'
 import useLocalStorage from "use-local-storage";
@@ -10,6 +10,18 @@ import FactOptions from "./FactOptions"
 
 const minFactLength = 60
 const maxFactLength = 2800
+
+export interface IOptionsProps {
+    isSettingsOpened: boolean;
+    maxFactLengthStorage: string;
+    changeFactLength2(e: ChangeEvent<HTMLInputElement>): void;
+    changeFactLength(e: ChangeEvent<HTMLInputElement>): void;
+    max: number
+    min: number
+    fetchedFacts: IFact[]
+    facts: IFact[]
+    setIsSettingsOpened: Dispatch<SetStateAction<boolean>>
+}
 
 const Fact = () => {
     const { t, lang } = useTranslation('common')
@@ -90,6 +102,10 @@ const Fact = () => {
         setMaxFactLengthStorage(e.target.value)
     }
 
+    function isSettingsDefault() {
+        return getLengthLongestFact(fetchedFacts) <= Number(maxFactLengthStorage)
+    }
+
     useEffect(() => {
         let value = Math.max(minFactLength, Math.min(maxFactLength, Number(maxFactLengthStorage)));
 
@@ -119,13 +135,13 @@ const Fact = () => {
                 <h3 className='did-you-know'>
                     {t('did-you-know')}
                 </h3>
-                <div className="fact-text-wrapper">
+                <div className={`fact-text-wrapper ${isSettingsOpened ? 'settings-opened' : ''}`}>
                     <FactOptions
                         isSettingsOpened={isSettingsOpened}
                         maxFactLengthStorage={maxFactLengthStorage}
                         changeFactLength2={changeFactLength2}
                         changeFactLength={changeFactLength}
-                        max={maxFactLength} 
+                        max={maxFactLength}
                         min={minFactLength}
                         fetchedFacts={fetchedFacts}
                         facts={facts}
@@ -184,7 +200,10 @@ const Fact = () => {
                     type='button'
                     onClick={(e) => { e.stopPropagation(); setIsSettingsOpened(prev => !prev) }}
                 >
-                    <SvgWrenchNut />
+                    <SvgWrenchNut
+                        isSettingsOpened={isSettingsOpened}
+                        isSettingsDefault={isSettingsDefault()}
+                    />
                 </button>
             </div>
         </div>

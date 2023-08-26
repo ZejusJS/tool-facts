@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function BackSvg() {
 	return (
 		<svg className='back-svg' height="800px" width="800px" version="1.1" viewBox="0 0 96.154 96.154" xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve">

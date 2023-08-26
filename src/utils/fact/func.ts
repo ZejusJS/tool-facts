@@ -17,7 +17,7 @@ export function funcShuffleFacts(facts: IFact[], maxFactLength?: number): IFact[
     return array
 }
 
-export function getLongestFactForRange(facts: IFact[]): number {
+export function getLengthLongestFact(facts: IFact[]): number {
     let longest: IFact = {
         id: "",
         fact: ""

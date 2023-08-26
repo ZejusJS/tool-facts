@@ -1,4 +1,4 @@
-import * as React from "react";
+import { memo } from "react"
 
 function SvgClose(props) {
   return (
@@ -20,5 +20,5 @@ function SvgClose(props) {
   );
 }
 
-const MemoSvgClose = React.memo(SvgClose);
+const MemoSvgClose = memo(SvgClose);
 export default MemoSvgClose;
