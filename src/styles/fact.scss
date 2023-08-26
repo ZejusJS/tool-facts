@@ -271,6 +271,8 @@
                     user-select: none;
                     pointer-events: none;
                     opacity: 0.5;
+                    height: 100%;
+                    overflow: hidden;
                 }
 
                 &.hidden {
@@ -344,6 +346,39 @@
                     width: 100%;
                     height: auto;
                     max-height: 100%;
+
+                    path {
+                        transition: fill 150ms;
+
+                        &.wrench {
+                            fill: var(--text-color-high);
+                        }
+                        &.wrench-shadow {
+                            fill: var(--dark-accent-1);
+                        }
+                    }
+
+                    &.changed {
+                        path {
+                            &.wrench {
+                                fill: var(--dark-accent-3);
+                            }
+                            &.wrench-shadow {
+                                fill: var(--text-color-high);
+                            }
+                        }
+                    }
+
+                    &.opened {
+                        path {
+                            &.wrench {
+                                fill: var(--dark-accent-border-1);
+                            }
+                            &.wrench-shadow {
+                                fill: var(--text-color-high);
+                            }
+                        }
+                    }
                 }
 
                 @media (max-width: 300px) {

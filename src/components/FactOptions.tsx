@@ -1,6 +1,8 @@
 import useTranslation from 'next-translate/useTranslation'
-import { getLongestFactForRange, funcShuffleFacts } from "@/utils/fact/func"
+import { getLengthLongestFact, funcShuffleFacts } from "@/utils/fact/func"
 import SvgClose from '@/svg/SvgClose'
+import Trans from 'next-translate/Trans'
+import { IOptionsProps } from './Fact'
 
 const FactOptions = ({
     isSettingsOpened,
@@ -12,8 +14,14 @@ const FactOptions = ({
     min,
     fetchedFacts,
     facts
-}: any) => {
+}: IOptionsProps) => {
     const { t } = useTranslation('common')
+
+    function getTotalFactsNumber() {
+        return (
+            funcShuffleFacts(fetchedFacts, Number(maxFactLengthStorage)).length
+        )
+    }
 
     return (
         <div
@@ -23,6 +31,7 @@ const FactOptions = ({
         >
             <button
                 title={t('settings.close')}
+                disabled={!isSettingsOpened}
                 className='close'
                 type='button'
                 onClick={() => setIsSettingsOpened(false)}
@@ -32,11 +41,13 @@ const FactOptions = ({
             <div className="options">
                 <h6>{t('settings.title')}</h6>
                 <p className="total-match">
-                    {t('settings.total')}
-                    &nbsp;
-                    <span>
-                        {funcShuffleFacts(fetchedFacts, maxFactLengthStorage).length}
-                    </span>
+                    <Trans
+                        i18nKey="common:settings.total"
+                        components={[
+                            <span></span>
+                        ]}
+                        values={{ count: getTotalFactsNumber(), ofTotal: fetchedFacts.length }}
+                    />
                 </p>
                 <div className="block">
                     <label
@@ -59,7 +70,7 @@ const FactOptions = ({
                         type="range"
                         disabled={!isSettingsOpened}
                         min={min}
-                        max={getLongestFactForRange(fetchedFacts) || max}
+                        max={getLengthLongestFact(fetchedFacts) || max}
                         step="30"
                         value={maxFactLengthStorage}
                         onChange={changeFactLength}

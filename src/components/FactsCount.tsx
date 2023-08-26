@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Translate } from 'next-translate';
 import LinkText from './LinkText';
 import Trans from 'next-translate/Trans'
 
