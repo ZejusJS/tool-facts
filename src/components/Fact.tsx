@@ -58,7 +58,6 @@ const Fact = () => {
     function nextFact() {
         if (facts.length) {
             setFact(facts[factsCount.current])
-            console.log(facts)
 
             factsCount.current = factsCount.current + 1
 
