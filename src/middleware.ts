@@ -11,17 +11,17 @@ export function middleware(req: NextRequest) {
 
   // const reg = new RegExp(`((^${String(process.env.NEXT_PUBLIC_FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${locale})(\/)*?)`, 'g')
   // const reg2 = new RegExp(`((^\/${locale})(\/)*?)`, 'g')
-  
+
   let redirect = false
   let findLocale = false
   let findOneCookieMatch = false
   locales.map((lang) => {
-    const langReg = new RegExp(`((^${String(process.env.NEXT_PUBLIC_FRONTEND).replace('/', '\\/').replace('.', '\\.')}\/${lang})(\/)*?)`, 'g')
+    const langReg = new RegExp(`((^${String(req.nextUrl.origin).replace('/', '\\/').replace('.', '\\.')}\/${lang})(\/)*?)`, 'g')
 
     if (lang === locale) findOneCookieMatch = true
     if (locale && req.url.match(langReg) && locale !== lang) {
       // console.log('redirect')
-      req.nextUrl.href = req.url.replace(langReg, process.env.NEXT_PUBLIC_FRONTEND + '/' + locale)
+      req.nextUrl.href = req.url.replace(langReg, req.nextUrl.origin + '/' + locale)
       redirect = true
     }
     if (req.url.match(langReg)) {

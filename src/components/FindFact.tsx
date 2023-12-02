@@ -17,7 +17,7 @@ const FindFact = ({ text, id }: IFact) => {
 
     function copyFactUrl() {
         if (navigator?.clipboard) {
-            navigator.clipboard.writeText(process.env.NEXT_PUBLIC_FRONTEND + '/fact/' + id)
+            navigator.clipboard.writeText(window.location.origin + '/fact/' + id)
 
             setIsUrlCopied(true)
             setTimeout(() => {
