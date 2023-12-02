@@ -71,7 +71,7 @@ const index = ({ factFetch }: props) => {
 
     function copyFactUrl() {
         if (navigator?.clipboard) {
-            navigator.clipboard.writeText(process.env.NEXT_PUBLIC_FRONTEND + '/fact/' + fact.id)
+            navigator.clipboard.writeText(window.location.origin + '/fact/' + fact.id)
         }
     }
 
