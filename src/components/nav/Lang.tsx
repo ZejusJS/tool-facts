@@ -50,10 +50,10 @@ const lang = () => {
                             scroll={false}
                             title={t(`language-name-${lng}`)}
                             prefetch={false}
-                            aria-label={lng === 'lng-en' ? "Change the language to english" : "Změnit jazyk na češtinu"}
+                            aria-label={lng === 'en' ? "Change the language to english" : "Změnit jazyk na češtinu"}
                         >
                             {
-                                lng === 'lng-en' ?
+                                lng === 'en' ?
                                     <EnFlag /> : <CsFlag />
                             }
                         </Link>

@@ -23,14 +23,14 @@ const FactShare = ({ factJson }: props) => {
 
     useEffect(() => {
         // console.log(fact)
-        if (!fact[lang?.slice(4)]?.length) {
+        if (!fact[lang]?.length) {
             setAlert(true)
         }
     }, [])
 
     function findLocale(): string {
         let found = locales.find(locale => {
-            return fact[locale?.slice(4)]?.length
+            return fact[locale]?.length
         })
         return String(found)
     }
@@ -54,8 +54,8 @@ const FactShare = ({ factJson }: props) => {
                 <div className="logo-con"></div>
                 <div className={`fact-div ${alert ? "background" : ''}`}>
                     <h2>{t('did-you-know')}</h2>
-                    {fact[lang?.slice(4)]?.length ?
-                        <p className="fact">{fact[lang?.slice(4)]}</p>
+                    {fact[lang]?.length ?
+                        <p className="fact">{fact[lang]}</p>
                         :
                         <p className="fact">{fact[findLocale()]}</p>
                     }

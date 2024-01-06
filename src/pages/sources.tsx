@@ -19,9 +19,9 @@ const sources = () => {
             <section className="links-list">
                 <h2>{t('title')}</h2>
                 <ul>
-                    {links.map(link => {
+                    {links.map((link, i) => {
                         return (
-                            <li>
+                            <li key={i}>
                                 <a href={link} target="_blank">
                                     {link.replace(/(https?:\/\/)|(www\.)/g, '')}
                                 </a>

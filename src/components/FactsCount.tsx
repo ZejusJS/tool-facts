@@ -30,8 +30,8 @@ const FactsCount = () => {
                 <Trans
                     i18nKey="common:total"
                     components={[
-                        <LinkText lang='lng-cs' key={'link1'} />,
-                        <LinkText lang='lng-en' key={'link2'} />,
+                        <LinkText lang='cs' key={'link1'} />,
+                        <LinkText lang='en' key={'link2'} />,
                         <span className={"count" + ` ${langs.factsCS == 0 ? "blur" : ""}`}></span>
                     ]}
                     values={{ cs: langs.factsCS, en: langs.factsEN }}

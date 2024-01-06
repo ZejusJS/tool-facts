@@ -25,7 +25,7 @@ const FindFact = () => {
             url: "/api/find-fact",
             params: {
                 query: querySplit,
-                lng: lang.slice(4),
+                lng: lang,
                 formatted: true
             },
             method: "get",
