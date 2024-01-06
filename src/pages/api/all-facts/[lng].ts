@@ -16,7 +16,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { query: { lng } } = req
-  let lang = String(lng?.slice(4))
+  let lang = String(lng)
 
   switch (req.method) {
     case 'GET':

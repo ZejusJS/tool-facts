@@ -22,7 +22,7 @@ function Error() {
     }, [])
 
     let style = facts ? {
-        "--n": facts[rand][lang?.slice(4)].length + t('know').length
+        "--n": facts[rand][lang].length + t('know').length
     } as React.CSSProperties : {}
 
     return (
@@ -36,7 +36,7 @@ function Error() {
                     <p className="random-fact">
                         {facts ?
                             <span className="type" style={style}>
-                                {t('know')} {facts ? facts[rand][lang?.slice(4)] : ""}
+                                {t('know')} {facts ? facts[rand][lang] : ""}
                             </span>
                             : ''}
                     </p>

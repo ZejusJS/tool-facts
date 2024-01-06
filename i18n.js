@@ -1,6 +1,6 @@
 module.exports = {
-    locales: ['lng-en', 'lng-cs'], 
-    defaultLocale: 'lng-en', 
+    locales: ['en', 'cs'], 
+    defaultLocale: 'en', 
     pages: {
         '*': ['common', 'nav', 'form', 'about', 'error', "meta", 'menu'],
         "/fact/[id]": ['share-fact'],
